@@ -43,8 +43,9 @@ public class GUI_InformacionEstudiantes extends javax.swing.JPanel {
     }
     public void mostrarInformacion(String arreglo[])
     {
-        this.jt_NombreCompleto.setText(arreglo[0]);
-        this.jt_Direccion.setText(arreglo[1]);
+        this.jt_Cedula.setText(arreglo[0]);
+        this.jt_NombreCompleto.setText(arreglo[1]);
+        this.jt_Direccion.setText(arreglo[2]);
         
     }
     

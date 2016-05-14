@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.Controlador_FRM_MenuPrincipal;
+import Vista.FRM_SistemaInformacion;
 
 /**
  *
@@ -13,28 +14,30 @@ import Controlador.Controlador_FRM_MenuPrincipal;
  */
 public class FRM_MenuPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FRM_MenuPrincipal
-     */
+    //Se declaran las variables
+    private String registro = "";
     
+    //Referencias
     Controlador_FRM_MenuPrincipal controlador_FRM_MenuPrincipal;
+//    FRM_SistemaInformacion frmsi;
     
+    //Constructor de la clase
     public FRM_MenuPrincipal() {
         initComponents();
         this.setLocation(100, 100);
         controlador_FRM_MenuPrincipal = new Controlador_FRM_MenuPrincipal();
 
                
-        agregarEventos();
+//        agregarEventos();
     }  
-    public void agregarEventos()
-    {
-        this.jm_Salir.addActionListener(controlador_FRM_MenuPrincipal);
-        this.jm_Estudiantes.addActionListener(controlador_FRM_MenuPrincipal);
-        this.jm_Cursos.addActionListener(controlador_FRM_MenuPrincipal);
-        this.jm_Matricula.addActionListener(controlador_FRM_MenuPrincipal);
-        this.jM_Usuarios.addActionListener(controlador_FRM_MenuPrincipal);
-    }
+//    public void agregarEventos()
+//    {
+//        this.jm_Salir.addActionListener(controlador_FRM_MenuPrincipal);
+//        this.jm_Estudiantes.addActionListener(controlador_FRM_MenuPrincipal);
+//        this.jm_Cursos.addActionListener(controlador_FRM_MenuPrincipal);
+//        this.jm_Matricula.addActionListener(controlador_FRM_MenuPrincipal);
+//        this.jM_Usuarios.addActionListener(controlador_FRM_MenuPrincipal);
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,7 +54,9 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jl_FondoMenuPrincipal = new javax.swing.JLabel();
+        jB_RegistrarEstudiante = new javax.swing.JButton();
+        jB_RegistrarCurso = new javax.swing.JButton();
+        jB_RegistrarUsuario = new javax.swing.JButton();
         jm_MenuPrincipal = new javax.swing.JMenuBar();
         jm_Archivo = new javax.swing.JMenu();
         jm_Salir = new javax.swing.JMenuItem();
@@ -77,7 +82,26 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jl_FondoMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo.jpg"))); // NOI18N
+        jB_RegistrarEstudiante.setText("Registrar Estudiante");
+        jB_RegistrarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_RegistrarEstudianteActionPerformed(evt);
+            }
+        });
+
+        jB_RegistrarCurso.setText("Registrar Curso");
+        jB_RegistrarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_RegistrarCursoActionPerformed(evt);
+            }
+        });
+
+        jB_RegistrarUsuario.setText("Registrar Usuario");
+        jB_RegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_RegistrarUsuarioActionPerformed(evt);
+            }
+        });
 
         jm_Archivo.setText("Archivo");
 
@@ -112,16 +136,65 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jl_FondoMenuPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jB_RegistrarEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jB_RegistrarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jB_RegistrarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(597, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jl_FondoMenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(jB_RegistrarEstudiante)
+                .addGap(18, 18, 18)
+                .addComponent(jB_RegistrarCurso)
+                .addGap(18, 18, 18)
+                .addComponent(jB_RegistrarUsuario)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jB_RegistrarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_RegistrarEstudianteActionPerformed
+        
+        registro = "Estudiantes";
+        FRM_SistemaInformacion frmsi = new FRM_SistemaInformacion();
+        frmsi.instanciaPrincipal(this);
+        frmsi.setVisible(true);
+        
+    }//GEN-LAST:event_jB_RegistrarEstudianteActionPerformed
+
+    private void jB_RegistrarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_RegistrarCursoActionPerformed
+
+        registro = "Cursos";
+        FRM_SistemaInformacion frmsi = new FRM_SistemaInformacion();
+        frmsi.instanciaPrincipal(this);
+        frmsi.setVisible(true);
+        
+    }//GEN-LAST:event_jB_RegistrarCursoActionPerformed
+
+    private void jB_RegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_RegistrarUsuarioActionPerformed
+        
+        registro = "Usuarios";
+        FRM_SistemaInformacion frmsi = new FRM_SistemaInformacion();
+        frmsi.instanciaPrincipal(this);
+        frmsi.setVisible(true);
+        
+    }//GEN-LAST:event_jB_RegistrarUsuarioActionPerformed
+
+    /*
+    
+    */
+    public String getRegistro() {
+        
+        return registro;
+        
+    }//
+    
     /**
      * @param args the command line arguments
      */
@@ -152,23 +225,15 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                if(true)
-                {
-                    new FRM_MenuPrincipal().setVisible(true);
-                    System.out.println("Mostró");
-                }
-                else
-                {
-                    new FRM_MenuPrincipal().setVisible(false);
-                    System.out.println("No mostró");
-
-                }
-                   
+                new FRM_MenuPrincipal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jB_RegistrarCurso;
+    private javax.swing.JButton jB_RegistrarEstudiante;
+    private javax.swing.JButton jB_RegistrarUsuario;
     private javax.swing.JMenu jM_Reportes;
     private javax.swing.JMenuItem jM_Usuarios;
     private javax.swing.JMenu jMenu1;
@@ -177,7 +242,6 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JLabel jl_FondoMenuPrincipal;
     private javax.swing.JMenu jm_Archivo;
     private javax.swing.JMenuItem jm_Cursos;
     private javax.swing.JMenuItem jm_Estudiantes;
@@ -186,4 +250,5 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jm_MenuPrincipal;
     private javax.swing.JMenuItem jm_Salir;
     // End of variables declaration//GEN-END:variables
-}
+
+}//Fin FRM_MenuPrincipal

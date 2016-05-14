@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.Controlador_FRM_MantenimientoEstudiantes;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,11 +36,22 @@ public class FRM_MantenimientoEstudiantes extends javax.swing.JFrame {
     {
         this.gUI_InformacionEstudiantes1.mostrarInformacion(arreglo);
     }
-    
+    public void mostrarMensaje(String mensaje)
+    {
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
     public void limpiarCampos()
     {
         this.gUI_InformacionEstudiantes1.limpiarCampos();
     }
+    
+    /*
+    
+    */
+    public String getSistemaInfo() {
+        return this.getSistemaInfo();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

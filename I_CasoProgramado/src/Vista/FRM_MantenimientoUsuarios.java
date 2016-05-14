@@ -17,9 +17,9 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
     /**
      * Creates new form FRM_MantenimientoUsuarios
      */
-    public FRM_MantenimientoUsuarios(FRM_UsuarioLogin frmul) {
+    public FRM_MantenimientoUsuarios() {
         initComponents();
-        controlador_FRM_MantenimientoUsuarios = new Controlador_FRM_MantenimientoUsuarios(this, frmul);
+        controlador_FRM_MantenimientoUsuarios = new Controlador_FRM_MantenimientoUsuarios(this);
         
         this.gUI_Botones1.agregarEventos(controlador_FRM_MantenimientoUsuarios);            
     }

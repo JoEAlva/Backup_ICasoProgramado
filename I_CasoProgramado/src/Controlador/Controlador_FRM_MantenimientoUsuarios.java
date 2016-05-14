@@ -9,7 +9,6 @@ import Modelo.MetodosUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Vista.FRM_MantenimientoUsuarios;
-import Vista.FRM_UsuarioLogin;
 import Modelo.ArchivosUsuario;
 /**
  *
@@ -19,14 +18,12 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
 {   
     // Referencias
     FRM_MantenimientoUsuarios frmmu;
-    FRM_UsuarioLogin frmul;
     public MetodosUsuario metodosUsuario;
     ArchivosUsuario archivosUsuario;
         
     // Contructor
-    public Controlador_FRM_MantenimientoUsuarios(FRM_MantenimientoUsuarios frmmu, FRM_UsuarioLogin frmul) { 
+    public Controlador_FRM_MantenimientoUsuarios(FRM_MantenimientoUsuarios frmmu) { 
         this.frmmu=frmmu;
-        this.frmul=frmul;
         archivosUsuario = new ArchivosUsuario();
         metodosUsuario=new MetodosUsuario(archivosUsuario);
         
