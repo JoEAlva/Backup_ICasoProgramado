@@ -29,12 +29,15 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
     ArchivosEstudiante estudianteArchivos;
     XML_Estudiantes mxml;
     
-    public Controlador_FRM_MantenimientoEstudiantes(FRM_MantenimientoEstudiantes frmme)
+    public Controlador_FRM_MantenimientoEstudiantes(FRM_MantenimientoEstudiantes frmme, String sistemaInfo)
     {
+        this.sistemaInfo = sistemaInfo;
         this.frmme=frmme;
         mxml = new XML_Estudiantes(this.frmme);
         estudianteArchivos = new ArchivosEstudiante();
         metodos = new MetodosEstudiantes(estudianteArchivos);
+        
+        
                 
 //        if(estudianteArchivos.cargarInfoArchivoEstudiante())
 //        {
@@ -58,8 +61,9 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
         }
         if(e.getActionCommand().equals("Consultar"))
         {
-            mxml.consultarInformacionDelXml(frmme.devolverCedula());
-            frmme.mostrarInformacion(mxml.getArregloInformacion());
+            System.out.println("SistemaInfo" + sistemaInfo);
+//            mxml.consultarInformacionDelXml(frmme.devolverCedula());
+//            frmme.mostrarInformacion(mxml.getArregloInformacion());
 //            if(metodos.consultarEstudiante(mantenimientoEstudiantes.devolverCedula()))
 //            {
 //                mantenimientoEstudiantes.mostrarInformacion(metodos.getArregloInformacion());

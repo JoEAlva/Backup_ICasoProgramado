@@ -19,6 +19,10 @@ import java.awt.event.ActionListener;
  */
 public class Controlador_FRM_MenuPrincipal implements ActionListener{
     
+    //Se declaran las variables
+    String sistemaInfo = "";
+    
+    //Referencias
     FRM_MantenimientoEstudiantes mantenimientoEstudiantes;
     FRM_MantenimientoCursos mantenimientoCursos;
     FRM_Matricula matricula;
@@ -26,9 +30,9 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener{
     
     public Controlador_FRM_MenuPrincipal()
     {
-        mantenimientoEstudiantes=new FRM_MantenimientoEstudiantes();
-        mantenimientoCursos=new FRM_MantenimientoCursos();
-        fRM_MantenimientoUsuarios = new FRM_MantenimientoUsuarios();
+        mantenimientoEstudiantes=new FRM_MantenimientoEstudiantes(sistemaInfo);
+        mantenimientoCursos=new FRM_MantenimientoCursos(sistemaInfo);
+        fRM_MantenimientoUsuarios = new FRM_MantenimientoUsuarios(sistemaInfo);
         matricula= new FRM_Matricula(mantenimientoEstudiantes,mantenimientoCursos);       
     }
     

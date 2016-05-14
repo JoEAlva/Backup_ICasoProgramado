@@ -120,7 +120,7 @@ public class FRM_SistemaInformacion extends javax.swing.JFrame {
             
             if(frmmp.getRegistro().equals("Estudiantes")) {
              
-                frmme = new FRM_MantenimientoEstudiantes();
+                frmme = new FRM_MantenimientoEstudiantes(sistemaInfo);
                 this.setVisible(false);
                 frmme.setVisible(true);
                 
@@ -128,7 +128,7 @@ public class FRM_SistemaInformacion extends javax.swing.JFrame {
             
             if(frmmp.getRegistro().equals("Cursos")) {
                 
-                frmmc = new FRM_MantenimientoCursos();
+                frmmc = new FRM_MantenimientoCursos(sistemaInfo);
                 this.setVisible(false);
                 frmmc.setVisible(true);
                 
@@ -136,7 +136,7 @@ public class FRM_SistemaInformacion extends javax.swing.JFrame {
             
             if(frmmp.getRegistro().equals("Usuarios")) {
                 
-                frmmu = new FRM_MantenimientoUsuarios();
+                frmmu = new FRM_MantenimientoUsuarios(sistemaInfo);
                 this.setVisible(false);
                 frmmu.setVisible(true);
                 

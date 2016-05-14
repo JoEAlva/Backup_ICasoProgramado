@@ -14,12 +14,16 @@ import javax.swing.JOptionPane;
  */
 public class FRM_MantenimientoEstudiantes extends javax.swing.JFrame {
 
+    //Se declaran las variables
+    String sistemaInfo = "";
+    
     public Controlador_FRM_MantenimientoEstudiantes controlador_FRM_MantenimientoEstudiantes;
     
-    public FRM_MantenimientoEstudiantes() {
+    public FRM_MantenimientoEstudiantes(String sistemaInfo) {
         initComponents();
         setVisible(false);
-        controlador_FRM_MantenimientoEstudiantes=new Controlador_FRM_MantenimientoEstudiantes(this);
+        this.sistemaInfo = sistemaInfo;
+        controlador_FRM_MantenimientoEstudiantes=new Controlador_FRM_MantenimientoEstudiantes(this, this.sistemaInfo);
         gUI_Botones1.agregarEventos(controlador_FRM_MantenimientoEstudiantes);
         this.gUI_InformacionEstudiantes1.agregarEventoConsulta(controlador_FRM_MantenimientoEstudiantes);
     }
@@ -45,13 +49,7 @@ public class FRM_MantenimientoEstudiantes extends javax.swing.JFrame {
         this.gUI_InformacionEstudiantes1.limpiarCampos();
     }
     
-    /*
-    
-    */
-    public String getSistemaInfo() {
-        return this.getSistemaInfo();
-    }
-    
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

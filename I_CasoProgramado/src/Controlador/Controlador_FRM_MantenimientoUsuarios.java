@@ -16,13 +16,17 @@ import Modelo.ArchivosUsuario;
  */
 public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
 {   
+    //Se declaran las variables
+    String sistemaInfo = "";
+    
     // Referencias
     FRM_MantenimientoUsuarios frmmu;
     public MetodosUsuario metodosUsuario;
     ArchivosUsuario archivosUsuario;
         
     // Contructor
-    public Controlador_FRM_MantenimientoUsuarios(FRM_MantenimientoUsuarios frmmu) { 
+    public Controlador_FRM_MantenimientoUsuarios(FRM_MantenimientoUsuarios frmmu, String sistemaInfo) {
+        this.sistemaInfo = sistemaInfo;
         this.frmmu=frmmu;
         archivosUsuario = new ArchivosUsuario();
         metodosUsuario=new MetodosUsuario(archivosUsuario);

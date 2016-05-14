@@ -18,13 +18,18 @@ import java.awt.event.ActionListener;
  */
 public class Controlador_FRM_MantenimientoCursos implements ActionListener{
     
+    //Se declaran las variables
+    String sistemaInfo = "";
+    
+    //Referencias
     FRM_MantenimientoCursos frmmc;
     XML_Cursos xmlc;
     public MetodosCursos metodos;
     ArchivosCursos cursosArchivos;
     
-    public Controlador_FRM_MantenimientoCursos(FRM_MantenimientoCursos frmmc)//Constructor
+    public Controlador_FRM_MantenimientoCursos(FRM_MantenimientoCursos frmmc, String sistemaInfo)//Constructor
     {
+        this.sistemaInfo = sistemaInfo;
         this.frmmc= frmmc;
         xmlc = new XML_Cursos(frmmc);
         cursosArchivos = new ArchivosCursos();

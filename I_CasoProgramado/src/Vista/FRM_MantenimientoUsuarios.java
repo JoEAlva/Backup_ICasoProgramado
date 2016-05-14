@@ -12,16 +12,19 @@ import Controlador.Controlador_FRM_MantenimientoUsuarios;
  */
 public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
 
-     //Referencia
+    //Se declaran las variables
+    String sistemaInfo = "";
+    
+    //Referencia
     Controlador_FRM_MantenimientoUsuarios controlador_FRM_MantenimientoUsuarios;
-    /**
-     * Creates new form FRM_MantenimientoUsuarios
-     */
-    public FRM_MantenimientoUsuarios() {
-        initComponents();
-        controlador_FRM_MantenimientoUsuarios = new Controlador_FRM_MantenimientoUsuarios(this);
+    
+    public FRM_MantenimientoUsuarios(String sistemaInfo) {
         
+        initComponents();
+        this.sistemaInfo = sistemaInfo;
+        controlador_FRM_MantenimientoUsuarios = new Controlador_FRM_MantenimientoUsuarios(this, this.sistemaInfo);
         this.gUI_Botones1.agregarEventos(controlador_FRM_MantenimientoUsuarios);            
+    
     }
     
     /*

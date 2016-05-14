@@ -14,14 +14,16 @@ import javax.swing.JOptionPane;
  */
 public class FRM_MantenimientoCursos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FRM_MantenimientoCursos
-     */
+    //Se declaran las variables
+    String sistemaInfo = "";
+    
+    //Referencias
     public Controlador_FRM_MantenimientoCursos controlador;
     
-    public FRM_MantenimientoCursos() {
+    public FRM_MantenimientoCursos(String sistemaInfo) {
         initComponents();
-        controlador = new Controlador_FRM_MantenimientoCursos(this);
+        this.sistemaInfo = sistemaInfo;
+        controlador = new Controlador_FRM_MantenimientoCursos(this, sistemaInfo);
         this.gUI_Botones1.agregarEventos(controlador);
     }
     public String[] devolverInformacion()
