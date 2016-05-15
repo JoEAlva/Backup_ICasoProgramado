@@ -23,7 +23,7 @@ public class FRM_MantenimientoCursos extends javax.swing.JFrame {
     public FRM_MantenimientoCursos(String sistemaInfo) {
         initComponents();
         this.sistemaInfo = sistemaInfo;
-        controlador = new Controlador_FRM_MantenimientoCursos(this, sistemaInfo);
+        controlador = new Controlador_FRM_MantenimientoCursos(this, this.sistemaInfo);
         this.gUI_Botones1.agregarEventos(controlador);
     }
     public String[] devolverInformacion()

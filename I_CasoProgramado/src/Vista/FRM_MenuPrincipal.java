@@ -19,6 +19,7 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
     
     //Referencias
     Controlador_FRM_MenuPrincipal controlador_FRM_MenuPrincipal;
+    FRM_SistemaInformacion frmsi;
 //    FRM_SistemaInformacion frmsi;
     
     //Constructor de la clase
@@ -26,10 +27,11 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocation(100, 100);
         controlador_FRM_MenuPrincipal = new Controlador_FRM_MenuPrincipal();
-
+        frmsi = new FRM_SistemaInformacion(this);
                
 //        agregarEventos();
-    }  
+    }//Fin del constructor 
+    
 //    public void agregarEventos()
 //    {
 //        this.jm_Salir.addActionListener(controlador_FRM_MenuPrincipal);
@@ -162,8 +164,6 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
     private void jB_RegistrarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_RegistrarEstudianteActionPerformed
         
         registro = "Estudiantes";
-        FRM_SistemaInformacion frmsi = new FRM_SistemaInformacion();
-        frmsi.instanciaPrincipal(this);
         frmsi.setVisible(true);
         
     }//GEN-LAST:event_jB_RegistrarEstudianteActionPerformed
@@ -171,8 +171,6 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
     private void jB_RegistrarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_RegistrarCursoActionPerformed
 
         registro = "Cursos";
-        FRM_SistemaInformacion frmsi = new FRM_SistemaInformacion();
-        frmsi.instanciaPrincipal(this);
         frmsi.setVisible(true);
         
     }//GEN-LAST:event_jB_RegistrarCursoActionPerformed
@@ -180,8 +178,6 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
     private void jB_RegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_RegistrarUsuarioActionPerformed
         
         registro = "Usuarios";
-        FRM_SistemaInformacion frmsi = new FRM_SistemaInformacion();
-        frmsi.instanciaPrincipal(this);
         frmsi.setVisible(true);
         
     }//GEN-LAST:event_jB_RegistrarUsuarioActionPerformed

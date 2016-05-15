@@ -48,39 +48,53 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener{
         
     } 
     
+    /*
+    Método que evalua las siguientes condiciones 
+    */
     public void actionPerformed(ActionEvent e)
     {
-        if(e.getActionCommand().equals("Agregar"))
-        {
-            xmlc.guardarEnXML(frmmc.devolverInformacion());
-//            metodos.agregarCurso(frm_MantenimientoCursos.devolverInformacion());
-            frmmc.limpiarCampos();
-        }
-        if(e.getActionCommand().equals("Consultar"))
-        {
-            xmlc.consultarInformacionDelXml(frmmc.devolverSigla());
-            frmmc.mostrarInformacion(xmlc.getArregloInformacion());
-//            if(metodos.consultarCurso(frm_MantenimientoCursos.devolverSigla()))
-//            {
-//                frm_MantenimientoCursos.mostrarInformacion(metodos.getArregloInformacion());
-//            }
-//            else
-//            {
-//                metodos.mensajeConsultar();
-//                frm_MantenimientoCursos.limpiarCampos();
-//            }
-        }
-        if(e.getActionCommand().equals("Modificar"))
-        {
-//            metodos.modificarCurso(frm_MantenimientoCursos.devolverInformacion());
-           xmlc.modificarInformacionDelXml(frmmc.devolverInformacion());
-            frmmc.limpiarCampos();
-        }
-        if(e.getActionCommand().equals("Eliminar"))
-        {
-            xmlc.eliminarInformacionDelXml(frmmc.devolverSigla());
-//            metodos.eliminarCurso(frm_MantenimientoCursos.devolverInformacion());
-            frmmc.limpiarCampos();
-        }
-    }
-}
+        
+        //Inicio del switch
+        switch(this.sistemaInfo) {
+            
+            //En el caso que fuera ArchivosPlanos
+            case "ArchivosPlanos":
+                
+                if(e.getActionCommand().equals("Consultar")) {
+                    
+                    System.out.println("ArchivosPlanos");
+                    
+                }
+                 
+                break;
+                //Fin del caso ArchivosPlanos
+            
+            //En el caso que fuera XML
+            case "XML":
+                
+                if(e.getActionCommand().equals("Consultar")) {
+                    
+                    System.out.println("XML");
+                    
+                }
+                
+                break;
+                //Fin del caso XML
+            
+            //En el caso que fuera Bases de Datos
+            case "Bases_de_Datos":
+                
+                if(e.getActionCommand().equals("Consultar")) {
+                    
+                    System.out.println("Bases_de_Datos");
+                    
+                }
+                
+                break;
+                //Fin del caso Bases de Datos
+            
+        }//Fin del switch
+        
+    }//Fin del método actionPerformed
+    
+}//Fin de la clase Controlador_FRM_MantenimientoCurso

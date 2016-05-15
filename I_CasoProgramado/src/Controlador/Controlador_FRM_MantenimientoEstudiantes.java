@@ -24,11 +24,12 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
     String sistemaInfo = "";
     
     //Referencias
-    public MetodosEstudiantes metodos;
     FRM_MantenimientoEstudiantes frmme;
+    public MetodosEstudiantes metodos;
     ArchivosEstudiante estudianteArchivos;
     XML_Estudiantes mxml;
     
+    //Constructor de la clase
     public Controlador_FRM_MantenimientoEstudiantes(FRM_MantenimientoEstudiantes frmme, String sistemaInfo)
     {
         this.sistemaInfo = sistemaInfo;
@@ -36,9 +37,7 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
         mxml = new XML_Estudiantes(this.frmme);
         estudianteArchivos = new ArchivosEstudiante();
         metodos = new MetodosEstudiantes(estudianteArchivos);
-        
-        
-                
+                        
 //        if(estudianteArchivos.cargarInfoArchivoEstudiante())
 //        {
 //            System.out.println("Se cargó el archivo estudiante correctamente");
@@ -51,54 +50,54 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
         
     }
     
+    /*
+    Método que evalua las siguientes condiciones 
+    */
     public void actionPerformed(ActionEvent e)
     {
-        if(e.getActionCommand().equals("ConsultaRapida"))
-        {
+        
+        //Inicio del switch
+        switch(this.sistemaInfo) {
             
-            consultaRapida();
+            //En el caso que fuera ArchivosPlanos
+            case "ArchivosPlanos":
+                
+                if(e.getActionCommand().equals("Consultar")) {
+                    
+                    System.out.println("ArchivosPlanos");
+                    
+                }
+                 
+                break;
+                //Fin del caso ArchivosPlanos
             
-        }
-        if(e.getActionCommand().equals("Consultar"))
-        {
-            System.out.println("SistemaInfo" + sistemaInfo);
-//            mxml.consultarInformacionDelXml(frmme.devolverCedula());
-//            frmme.mostrarInformacion(mxml.getArregloInformacion());
-//            if(metodos.consultarEstudiante(mantenimientoEstudiantes.devolverCedula()))
-//            {
-//                mantenimientoEstudiantes.mostrarInformacion(metodos.getArregloInformacion());
-//            }
-//            else
-//            {
-//                metodos.mensajeConsultar();
-//                mantenimientoEstudiantes.limpiarCampos();
-//            }
+            //En el caso que fuera XML
+            case "XML":
+                
+                if(e.getActionCommand().equals("Consultar")) {
+                    
+                    System.out.println("XML");
+                    
+                }
+                
+                break;
+                //Fin del caso XML
             
-        }
-        if(e.getActionCommand().equals("Agregar"))
-        {
-            mxml.guardarEnXML(frmme.devolverInformacion());
-//            metodos.agregarEstudiante(mantenimientoEstudiantes.devolverInformacion());
-            frmme.limpiarCampos();
-//            metodos.mostrarInformacion();
-
-        }
-        if(e.getActionCommand().equals("Modificar"))
-        {
+            //En el caso que fuera Bases de Datos
+            case "Bases_de_Datos":
+                
+                if(e.getActionCommand().equals("Consultar")) {
+                    
+                    System.out.println("Bases_de_Datos");
+                    
+                }
+                
+                break;
+                //Fin del caso Bases de Datos
             
-//            metodos.modificarEstudiante(mantenimientoEstudiantes.devolverInformacion());
-            frmme.limpiarCampos();
+        }//Fin del switch
             
-        }
-        if(e.getActionCommand().equals("Eliminar"))
-        {
-            
-//            metodos.eliminarEstudiante(mantenimientoEstudiantes.devolverInformacion());
-            frmme.limpiarCampos();
-            
-        }
-            
-    }
+    }//Fin del método actionPerformed
     
     /*
     Método que 

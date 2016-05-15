@@ -24,63 +24,73 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
     public MetodosUsuario metodosUsuario;
     ArchivosUsuario archivosUsuario;
         
-    // Contructor
+    // Contructor de la clase
     public Controlador_FRM_MantenimientoUsuarios(FRM_MantenimientoUsuarios frmmu, String sistemaInfo) {
+        
         this.sistemaInfo = sistemaInfo;
         this.frmmu=frmmu;
         archivosUsuario = new ArchivosUsuario();
         metodosUsuario=new MetodosUsuario(archivosUsuario);
         
-        if(archivosUsuario.cargarArchivoUsuario())
-        {
-            System.out.println("Se cargó el archivo usuario correctamente(controlador)");
-        }
-        else
-        {
-            System.out.println("Error al cargar el archivo usuario(controlador)");
-        }
-        metodosUsuario.arrayUsuario = archivosUsuario.leerArchivoUsuario();
-    }
+//        if(archivosUsuario.cargarArchivoUsuario())
+//        {
+//            System.out.println("Se cargó el archivo usuario correctamente(controlador)");
+//        }
+//        else
+//        {
+//            System.out.println("Error al cargar el archivo usuario(controlador)");
+//        }
+//        metodosUsuario.arrayUsuario = archivosUsuario.leerArchivoUsuario();
+
+    }//Fin del constructor
     
     /*
-    Método que evalua condiciones 
+    Método que evalua las siguientes condiciones 
     */
     public void actionPerformed(ActionEvent e)
     {
-        if(e.getActionCommand().equals("Consultar"))
-        {
-            System.out.println("C");
-            if(metodosUsuario.consultarUsuario(frmmu.devolverInfoUsuario()))
-            {
-                frmmu.mostrarInfoPantalla(metodosUsuario.devolverArregloUsuario());
-            }
-            else
-            {
-             frmmu.limpiarCampos();
-            }
-        }
-        if(e.getActionCommand().equals("Agregar"))
-        {
-            System.out.println("A");
-            metodosUsuario.agregarUsuario(frmmu.devolverInfoUsuario());
-            frmmu.limpiarCampos();
-        }
-        if(e.getActionCommand().equals("Modificar"))
-        {
-            System.out.println("M");
-            metodosUsuario.modificarUsuario(metodosUsuario.devolverArregloUsuario());
-            frmmu.limpiarCampos();
-        }
-        if(e.getActionCommand().equals("Eliminar"))
-        {
-            System.out.println("E");
-            metodosUsuario.eliminarUsuario(frmmu.devolverInfoUsuario());
-            frmmu.limpiarCampos();
-        }
-        if(e.getActionCommand().equals("Login"))
-        {
+        
+        //Inicio del switch
+        switch(this.sistemaInfo) {
             
-        }
-    }
+            //En el caso que fuera ArchivosPlanos
+            case "ArchivosPlanos":
+                
+                if(e.getActionCommand().equals("Consultar")) {
+                    
+                    System.out.println("ArchivosPlanos");
+                    
+                }
+                 
+                break;
+                //Fin del caso ArchivosPlanos
+            
+            //En el caso que fuera XML
+            case "XML":
+                
+                if(e.getActionCommand().equals("Consultar")) {
+                    
+                    System.out.println("XML");
+                    
+                }
+                
+                break;
+                //Fin del caso XML
+            
+            //En el caso que fuera Bases de Datos
+            case "Bases_de_Datos":
+                
+                if(e.getActionCommand().equals("Consultar")) {
+                    
+                    System.out.println("Bases_de_Datos");
+                    
+                }
+                
+                break;
+                //Fin del caso Bases de Datos
+            
+        }//Fin del switch
+        
+    }//Fin del método actionPerformed
     
 }//Fin Controlador_FRM_MantenimientoUsuarios
