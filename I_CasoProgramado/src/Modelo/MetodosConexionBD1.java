@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author JorgeIgnacio
+ * @author JorgeIgnacioElizondoAlvarado
  */
 public class MetodosConexionBD1 {
     
