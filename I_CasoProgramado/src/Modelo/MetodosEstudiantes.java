@@ -11,36 +11,46 @@ import Vista.FRM_MantenimientoEstudiantes;
 
 /**
  *
- * @author tecnologiamultimedia
+ * @author JorgeIgnacioElizondoAlvarado
  */
 public class MetodosEstudiantes {
     
+    //Se declaran las variables
     public ArrayList <Estudiante> arrayEstudiantes;
     String arregloInformacionConsultada[]=new String[2];
-    ArchivosEstudiante estudianteArchivos;
-    FRM_MantenimientoEstudiantes fRM_MantenimientoEstudiantes;
     
+    //Referencias
+    ArchivosEstudiante estudianteArchivos;  
+    
+    //Constructor de la clase
     public MetodosEstudiantes(ArchivosEstudiante estudianteArchivos)
     {
+        
         arrayEstudiantes=new ArrayList <Estudiante>();
         this.estudianteArchivos = estudianteArchivos;
         //arrayEstudiantes = archivosEstudiante.leerInfoArchivoEstudiante();
-    }
+        
+    }//Fin del constructor de la clase
+    
+    /*
+    Método que agrega un nuevo estudiante al arrayEstudiante.
+    @param informacion[] arreglo de información relacionada al estudiante; como
+    cédula, nombre y dirección.
+    */
     public void agregarEstudiante(String informacion[])
     {
         Estudiante temporal=new Estudiante(informacion[0], informacion[1], informacion[2]);
         arrayEstudiantes.add(temporal);
-        JOptionPane.showMessageDialog(null, "El estudiante fue agregado en el"
-                + " registro.", "Universidad de Costa Rica", JOptionPane.INFORMATION_MESSAGE);
-    }
-    public void mostrarInformacion()
-    {
-        for(int contador=0;contador<arrayEstudiantes.size();contador++)
-        {
-            System.out.println(arrayEstudiantes.get(contador).getInformacion());
+        mensajeEstudianteAgregado();
         
-        }
     }
+    
+    /*
+    Método que extrae la información de un estudiante en el arrayEstudiante.
+    @param es el identificador del estudiante para el arrayEstudiante.
+    @return un boolean para demostrar que el estudiante de verdad existe en el
+    arrayEstudiante.
+    */
     public boolean consultarEstudiante(String cedula)
     {
         boolean existe=false;
@@ -58,6 +68,13 @@ public class MetodosEstudiantes {
         }
         return existe;
     }
+    
+    /*
+    Método que modifica un estudiante en el arrayEstudiante.
+    @param arreglo[] arreglo de información relacionada al estudiante; como
+    cédula, nombre y dirección. Va a cambiar la información del estudiante con
+    esa información.
+    */
     public void modificarEstudiante(String arreglo[])
     {
         for(int contador=0;contador<arrayEstudiantes.size();contador++)
@@ -66,32 +83,41 @@ public class MetodosEstudiantes {
             {
                 arrayEstudiantes.get(contador).setNombreCompleto(arreglo[1]);
                 arrayEstudiantes.get(contador).setDireccion(arreglo[2]);
-                mensajejUsuario();
+                mensajeEstudianteModificado();
                 contador = arrayEstudiantes.size();
             }
         }
     }
-    public void eliminarEstudiante(String arreglo[])
+    
+    /*
+    Método que elimina un estudiante en el arrayEstudiante.
+    @param cedula es el identificador del estudiante para el arrayEstudiante.
+    */
+    public void eliminarEstudiante(String cedula)
     {
         for(int contador=0;contador<arrayEstudiantes.size();contador++)
         {
-            if(arrayEstudiantes.get(contador).getCedula().equals(arreglo[0]))
+            if(arrayEstudiantes.get(contador).getCedula().equals(cedula))
             {
                 arrayEstudiantes.remove(contador);
-                mensajejUsuario();
+                mensajeEstudianteEliminado();
                 contador = arrayEstudiantes.size();
             }
         }
-    }//Fin eliminarEstudiante
+    }
     
+    /*
+    Método que devuelve un arreglo
+    @return arreglo de dos elementos que contiene la información consultada
+    */
     public String[] getArregloInformacion()
     {
         return this.arregloInformacionConsultada;
     }    
     
     /*
-    Crea un nuevo archivo. La información perteneciente al array
-    se escribe en el nuevo archivo
+    Método que crea un nuevo archivo. La información perteneciente al array
+    se escribe en el nuevo archivo.
     */
     public void escribirInformacionArchivo() {
         estudianteArchivos.crearArchivoEstudiante();
@@ -102,6 +128,9 @@ public class MetodosEstudiantes {
         }
     }
     
+    /*
+    Método que muestra un mensaje al usuario
+    */
     public void mensajeConsultar()
     {
         JOptionPane.showMessageDialog(null, "El estudiante no"
@@ -109,10 +138,37 @@ public class MetodosEstudiantes {
                                 + " Costa Rica", JOptionPane.OK_OPTION);
     }
     
+    /*
+    Método que muestra un mensaje al usuario
+    */
     public void mensajejUsuario()
     {
         JOptionPane.showMessageDialog(null, "Acción realizada correctamente",
         "Universidad de Costa Rica", JOptionPane.INFORMATION_MESSAGE);
     }
      
+    /*
+    Método que muestra un mensaje al usuario
+    */
+    public void mensajeEstudianteAgregado() {
+        JOptionPane.showMessageDialog(null, "El estudiante fue agregado en el"
+                + " registro.", "Universidad de Costa Rica", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    /*
+    Método que muestra un mensaje al usuario
+    */
+    public void mensajeEstudianteEliminado() {
+        JOptionPane.showMessageDialog(null, "El estudiante fue eliminado en el"
+                + " registro.", "Universidad de Costa Rica", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    /*
+    Método que muestra un mensaje al usuario
+    */
+    public void mensajeEstudianteModificado() {
+        JOptionPane.showMessageDialog(null, "El estudiante fue modificado en el"
+                + " registro.", "Universidad de Costa Rica", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
 }//Fin de la clase MetodosEstudiante
