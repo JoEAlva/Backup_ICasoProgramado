@@ -21,13 +21,16 @@ public class FRM_SistemaInformacion extends javax.swing.JFrame {
     FRM_MantenimientoUsuarios frmmu;
     
     //Se declaran las variables
-    String sistemaInfo = "";
+    
+    String sistemaInfo = "";//Almacena el sistema de información seleccionado por el usuario
     
     //Constructor de la clase
     public FRM_SistemaInformacion(FRM_MenuPrincipal frmmp) {
         
         initComponents();
         this.frmmp = frmmp;
+        //Selecciona el radioButton abajo en un principio
+        this.jRB_ArchivosPlanos.setSelected(true);
                 
     }//Fin del constructor
      
@@ -42,15 +45,19 @@ public class FRM_SistemaInformacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoSistemaInformacion = new javax.swing.ButtonGroup();
         jRB_ArchivosPlanos = new javax.swing.JRadioButton();
         jRB_XML = new javax.swing.JRadioButton();
         jRB_Bases_de_Datos = new javax.swing.JRadioButton();
         jB_Aceptar = new javax.swing.JButton();
 
+        grupoSistemaInformacion.add(jRB_ArchivosPlanos);
         jRB_ArchivosPlanos.setText("Archivos Planos");
 
+        grupoSistemaInformacion.add(jRB_XML);
         jRB_XML.setText("XML");
 
+        grupoSistemaInformacion.add(jRB_Bases_de_Datos);
         jRB_Bases_de_Datos.setText("Bases de Datos");
 
         jB_Aceptar.setText("Aceptar");
@@ -139,6 +146,7 @@ public class FRM_SistemaInformacion extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup grupoSistemaInformacion;
     private javax.swing.JButton jB_Aceptar;
     private javax.swing.JRadioButton jRB_ArchivosPlanos;
     private javax.swing.JRadioButton jRB_Bases_de_Datos;
