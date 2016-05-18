@@ -26,17 +26,18 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener{
     FRM_MantenimientoCursos frmmc;
     MetodosConexionBD1 conexionBD1;
     XML_Cursos xmlc;
-    public MetodosCursos metodos;
+    public MetodosCursos metodosCursos;
     ArchivosCursos cursosArchivos;
     
     public Controlador_FRM_MantenimientoCursos(FRM_MantenimientoCursos frmmc, String sistemaInfo, MetodosConexionBD1 conexionBD1)//Constructor
     {
         this.conexionBD1 = conexionBD1;
+        this.conexionBD1.realizarConexion();
         this.sistemaInfo = sistemaInfo;
         this.frmmc= frmmc;
         xmlc = new XML_Cursos(frmmc);
         cursosArchivos = new ArchivosCursos();
-        metodos = new MetodosCursos(cursosArchivos);
+        metodosCursos = new MetodosCursos(cursosArchivos);
                 
         if(cursosArchivos.cargarInfoCursosArchivo())
         {
@@ -47,7 +48,7 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener{
             System.out.println("No se cargó el archivo curso(controlador)");
         }
         
-        metodos.arrayCursos = cursosArchivos.leerInfoCursosArchivo();
+        metodosCursos.arrayCursos = cursosArchivos.leerInfoCursosArchivo();
         
     } 
     
@@ -65,7 +66,18 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener{
                 
                 if(e.getActionCommand().equals("Consultar")) {
                     
-                    
+                    if(metodosCursos.consultarCurso(frmmc.devolverSigla())) {
+                        
+                        frmmc.mostrarInformacion(metodosCursos.getArregloInformacion());
+                        frmmc.habilitarBotones();
+                        frmmc.habilitarCampos();
+                        
+                    }else {
+                        
+                        frmmc.habilitarAgregar();
+                        frmmc.habilitarCampos();
+                        
+                    }
                     
                 }
                 

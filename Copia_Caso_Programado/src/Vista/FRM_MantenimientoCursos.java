@@ -22,6 +22,7 @@ public class FRM_MantenimientoCursos extends javax.swing.JFrame {
     public Controlador_FRM_MantenimientoCursos controlador;
     MetodosConexionBD1 conexionBD1;
     
+    //Constructor de la clase
     public FRM_MantenimientoCursos(String sistemaInfo, MetodosConexionBD1 conexionBD1) {
         
         initComponents();
@@ -29,26 +30,40 @@ public class FRM_MantenimientoCursos extends javax.swing.JFrame {
         this.sistemaInfo = sistemaInfo;
         controlador = new Controlador_FRM_MantenimientoCursos(this, this.sistemaInfo, this.conexionBD1);
         this.gUI_Botones1.agregarEventos(controlador);
-    }
-    public String[] devolverInformacion()
-    {
+        estadoInicialBotones();
+        estadoInicialCampos();
+        
+    }//Fin del constructor de la clase
+        
+    public String[] devolverInformacion(){
         return this.gUI_InformacionCursos1.devolverInformacion();
     }
-    public String devolverSigla()
-    {
+    public String devolverSigla(){
         return this.gUI_InformacionCursos1.devolverSigla();
     }
-    public void mostrarInformacion(String arreglo[])
-    {
+    public void mostrarInformacion(String arreglo[]){
         this.gUI_InformacionCursos1.mostrarInformacion(arreglo);
     }
-    public void mostrarMensaje(String mensaje) 
-    {
+    public void mostrarMensaje(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje);
     }
-    public void limpiarCampos()
-    {
+    public void limpiarCampos() {
         this.gUI_InformacionCursos1.limpiarCampos();
+    }
+    public void habilitarCampos() {
+        this.gUI_InformacionCursos1.habilitarCampos();
+    }
+    public void habilitarAgregar() {
+        this.gUI_Botones1.habilitarAgregar();
+    }
+    public void estadoInicialBotones() {
+        this.gUI_Botones1.estadoInicialBotones();
+    }
+    public void estadoInicialCampos() {
+        this.gUI_InformacionCursos1.estadoInicialCampos();
+    }
+    public void habilitarBotones() {
+        this.gUI_Botones1.habilitarBotones();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,7 +108,7 @@ public class FRM_MantenimientoCursos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
-        controlador.metodos.escribirInformacionArchivo();
+        controlador.metodosCursos.escribirInformacionArchivo();
     }//GEN-LAST:event_formComponentHidden
 
     /**

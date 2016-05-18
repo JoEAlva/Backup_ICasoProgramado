@@ -18,8 +18,7 @@ public class GUI_InformacionCursos extends javax.swing.JPanel {
         initComponents();
         cargarCreditos();
     }
-    public void cargarCreditos()
-    {
+    public void cargarCreditos(){
         this.jcb_Creditos.removeAllItems();
         for(int contador=1;contador<=10;contador++)
         {
@@ -27,8 +26,7 @@ public class GUI_InformacionCursos extends javax.swing.JPanel {
         }
         this.jcb_Creditos.setSelectedIndex(5);
     }
-    public String[] devolverInformacion()
-    {
+    public String[] devolverInformacion(){
         String arreglo[];
         arreglo=new String[4];
         arreglo[0]=this.jt_Sigla.getText();
@@ -39,24 +37,33 @@ public class GUI_InformacionCursos extends javax.swing.JPanel {
         return arreglo;
     
     }
-    public String devolverSigla()
-    {
+    public String devolverSigla(){
         return this.jt_Sigla.getText();
     }
-    public void mostrarInformacion(String arreglo[])
-    {
+    public void mostrarInformacion(String arreglo[]){
         this.jt_Sigla.setText(arreglo[0]);
         this.jt_Nombre.setText(arreglo[1]);
         this.jcb_Creditos.setSelectedIndex(Integer.parseInt(arreglo[2]));
         this.jt_Horario.setText(arreglo[3]);
     }
     
-    public void limpiarCampos()
-    {
+    public void limpiarCampos(){
         this.jt_Nombre.setText("");
         this.jt_Sigla.setText("");
         this.jcb_Creditos.setSelectedIndex(5);
         this.jt_Horario.setText("");
+    }
+    public void estadoInicialCampos() {
+        this.jt_Sigla.setEnabled(true);
+        this.jt_Nombre.setEnabled(false);
+        this.jcb_Creditos.setEnabled(false);
+        this.jt_Horario.setEnabled(false);
+    }
+    public void habilitarCampos() {
+        this.jt_Sigla.setEnabled(false);
+        this.jt_Nombre.setEnabled(true);
+        this.jcb_Creditos.setEnabled(true);
+        this.jt_Horario.setEnabled(true);
     }
     
     /*

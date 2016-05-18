@@ -37,6 +37,7 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
         this.frmme=frmme;
         this.sistemaInfo = sistemaInfo;
         this.conexionBD1 = conexionBD1;
+        this.conexionBD1.realizarConexion();
         mxml = new XML_Estudiantes(this.frmme);
         estudianteArchivos = new ArchivosEstudiante();
         metodosEstudiantes = new MetodosEstudiantes(estudianteArchivos);

@@ -136,7 +136,7 @@ public class MetodosConexionBD1 {
         boolean existe = false;
         ResultSet rs = null;
         Statement cmd = null;
-        String info[] = new String[2];
+        String info[] = new String[3];
 
         try {
                 cmd = con.createStatement();
@@ -144,8 +144,9 @@ public class MetodosConexionBD1 {
                 
                 while (rs.next()) 
                 {
-                    info[0] = rs.getString("nombre");
-                    info[1] = rs.getString("direccion");
+                    info[0] = ""+cedula;
+                    info[1] = rs.getString("nombre");
+                    info[2] = rs.getString("direccion");
                     //int edad = rs.getInt(2);
                     this.infoEst = info;
                     existe = true;
