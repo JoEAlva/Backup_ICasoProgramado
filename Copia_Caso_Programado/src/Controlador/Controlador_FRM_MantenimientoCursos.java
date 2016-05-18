@@ -76,6 +76,7 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener{
                         
                         frmmc.habilitarAgregar();
                         frmmc.habilitarCampos();
+                        metodosCursos.mensajeConsultar();
                         
                     }
                     
@@ -83,17 +84,31 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener{
                 
                 if(e.getActionCommand().equals("Agregar")) {
                     
-                    
+                    metodosCursos.agregarCurso(frmmc.devolverInformacion());
+                    frmmc.limpiarCampos();
+                    frmmc.estadoInicialBotones();
+                    frmmc.estadoInicialCampos();
+                    metodosCursos.mensajeCursoAgregado();
                     
                 }
                 
                 if(e.getActionCommand().equals("Modificar")) {
                     
-                    
+                    metodosCursos.modificarCurso(frmmc.devolverInformacion());
+                    frmmc.limpiarCampos();
+                    frmmc.estadoInicialBotones();
+                    frmmc.estadoInicialCampos();
+                    metodosCursos.mensajeCursoModificado();
                     
                 }
                 
                 if(e.getActionCommand().equals("Eliminar")) {
+                    
+                    metodosCursos.eliminarCurso(frmmc.devolverSigla());
+                    frmmc.limpiarCampos();
+                    frmmc.estadoInicialBotones();
+                    frmmc.estadoInicialCampos();
+                    metodosCursos.mensajeCursoEliminado();
                     
                 }
                  
@@ -105,23 +120,51 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener{
                 
                 if(e.getActionCommand().equals("Consultar")) {
                     
-                    
+                    if(xmlc.consultarInformacionDelXml(frmmc.devolverSigla())) {
+                        
+                        frmmc.mostrarInformacion(xmlc.getArregloInformacion());
+                        frmmc.habilitarAgregar();
+                        frmmc.habilitarBotones();
+                        
+                        
+                    }else {
+                        
+                        metodosCursos.mensajeConsultar();
+                        frmmc.habilitarAgregar();
+                        frmmc.habilitarCampos();
+                        frmmc.habilitarAgregar();
+                        
+                    }
                     
                 }
                 
                 if(e.getActionCommand().equals("Agregar")) {
                     
-                    
+                    xmlc.guardarEnXML(frmmc.devolverInformacion());
+                    frmmc.limpiarCampos();
+                    frmmc.estadoInicialBotones();
+                    frmmc.estadoInicialCampos();
+                    metodosCursos.mensajeCursoAgregado();
                     
                 }
                 
                 if(e.getActionCommand().equals("Modificar")) {
                     
-                    
+                    xmlc.modificarInformacionDelXml(frmmc.devolverInformacion());
+                    frmmc.limpiarCampos();
+                    frmmc.estadoInicialBotones();
+                    frmmc.estadoInicialCampos();
+                    metodosCursos.mensajeCursoModificado();
                     
                 }
                 
                 if(e.getActionCommand().equals("Eliminar")) {
+                    
+                    xmlc.eliminarInformacionDelXml(frmmc.devolverSigla());
+                    frmmc.limpiarCampos();
+                    frmmc.estadoInicialBotones();
+                    frmmc.estadoInicialCampos();
+                    metodosCursos.mensajeCursoEliminado();
                     
                 }
                 

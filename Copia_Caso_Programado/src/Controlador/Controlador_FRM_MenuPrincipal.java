@@ -42,7 +42,7 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener{
         conexionBD1 = new MetodosConexionBD1();
         
         
-        manejador_Clases.mostrarFRM_SistemaInformacion();
+        this.manejador_Clases.mostrarFRM_SistemaInformacion();
         
     }
     

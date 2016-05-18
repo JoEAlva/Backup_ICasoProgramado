@@ -59,7 +59,7 @@ public class XML_Cursos {
         else
         {
             crearXML();
-            frmmc.mostrarMensaje("No existía un archivo XML creado, ya fue creado y puede proceder a utilizarlo");
+            //frmmc.mostrarMensaje("No existía un archivo XML creado, ya fue creado y puede proceder a utilizarlo");
         }
         
         arregloInformacion=new String[4];
