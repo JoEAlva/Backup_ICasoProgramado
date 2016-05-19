@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import Vista.FRM_MantenimientoUsuarios;
 import Modelo.ArchivosUsuario;
 import Modelo.MetodosConexionBD1;
+import Modelo.XML_Usuarios;
 /**
  *
  * @author JorgeIgnacioElizondoAlvarado
@@ -25,15 +26,19 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
     public MetodosUsuario metodosUsuario;
     ArchivosUsuario archivosUsuario;
     MetodosConexionBD1 conexionBD1;
+    XML_Usuarios xML_Usuarios;
+    
         
     // Contructor de la clase
     public Controlador_FRM_MantenimientoUsuarios(FRM_MantenimientoUsuarios frmmu, String sistemaInfo, MetodosConexionBD1 conexionBD1) {
         
         this.conexionBD1 = conexionBD1;
+        this.conexionBD1.realizarConexion();
         this.sistemaInfo = sistemaInfo;
         this.frmmu=frmmu;
         archivosUsuario = new ArchivosUsuario();
         metodosUsuario=new MetodosUsuario(archivosUsuario);
+        xML_Usuarios = new XML_Usuarios(this.frmmu);
         
         if(archivosUsuario.cargarArchivoUsuario())
         {
@@ -61,8 +66,50 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
                 
                 if(e.getActionCommand().equals("Consultar")) {
                     
+                    if(metodosUsuario.consultarUsuario(frmmu.devolverInfoUsuario())) {
+                        
+                        frmmu.mostrarInfoPantalla(metodosUsuario.devolverArregloUsuario());
+                        frmmu.habilitarBotones();
+                        frmmu.administrarCampos();
+
+                        
+                    }else {
+                        
+                        metodosUsuario.mensajeNoSeEncuentraUsuario();
+                        frmmu.habilitarAgregar();
+                        frmmu.administrarCampos();
+                        
+                    }
+                                      
+                }
+                
+                if(e.getActionCommand().equals("Agregar")) {
                     
-                    System.out.println("ArchivosPlanos");
+                    metodosUsuario.agregarUsuario(frmmu.devolverInfoUsuario());
+                    frmmu.limpiarCampos();
+                    frmmu.estadoInicialCampos();
+                    frmmu.estadoInicialBotones();
+                    metodosUsuario.mensajeUsuarioAgregado();
+                    
+                }
+                
+                if(e.getActionCommand().equals("Modificar")) {
+                    
+                    metodosUsuario.modificarUsuario(frmmu.devolverInfoUsuario());
+                    frmmu.limpiarCampos();
+                    frmmu.estadoInicialCampos();
+                    frmmu.estadoInicialBotones();
+                    metodosUsuario.mensajeModificado();
+                    
+                }
+                
+                if(e.getActionCommand().equals("Eliminar")) {
+                    
+                    metodosUsuario.eliminarUsuario(frmmu.devolverIdUsuario());
+                    frmmu.limpiarCampos();
+                    frmmu.estadoInicialCampos();
+                    frmmu.estadoInicialBotones();
+                    metodosUsuario.mensajeUsuarioEliminado();
                     
                 }
                  
@@ -74,10 +121,52 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
                 
                 if(e.getActionCommand().equals("Consultar")) {
                     
-                    System.out.println("XML");
+                    if(xML_Usuarios.consultarInformacionDelXml(frmmu.devolverIdUsuario())) {
+                        
+                        frmmu.mostrarInfoPantalla(xML_Usuarios.getArregloInformacion());
+                        frmmu.habilitarBotones();
+                        frmmu.administrarCampos();
+                        
+                    }else {
+                        
+                        metodosUsuario.mensajeNoSeEncuentraUsuario();
+                        frmmu.habilitarAgregar();
+                        frmmu.administrarCampos();
+                        
+                    }
                     
                 }
                 
+                if(e.getActionCommand().equals("Agregar")) {
+                    
+                    xML_Usuarios.guardarEnXML(frmmu.devolverInfoUsuario());
+                    frmmu.limpiarCampos();
+                    frmmu.estadoInicialCampos();
+                    frmmu.estadoInicialBotones();
+                    metodosUsuario.mensajeUsuarioAgregado();
+                    
+                }
+                
+                if(e.getActionCommand().equals("Modificar")) {
+                    
+                    xML_Usuarios.modificarInformacionDelXml(frmmu.devolverInfoUsuario());
+                    frmmu.limpiarCampos();
+                    frmmu.estadoInicialCampos();
+                    frmmu.estadoInicialBotones();
+                    metodosUsuario.mensajeModificado();
+                    
+                }
+                
+                if(e.getActionCommand().equals("Eliminar")) {
+                    
+                    xML_Usuarios.eliminarInformacionDelXml(frmmu.devolverIdUsuario());
+                    frmmu.limpiarCampos();
+                    frmmu.estadoInicialCampos();
+                    frmmu.estadoInicialBotones();
+                    metodosUsuario.mensajeUsuarioEliminado();
+                    
+                }            
+                                
                 break;
                 //Fin del caso XML
             
@@ -86,9 +175,52 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
                 
                 if(e.getActionCommand().equals("Consultar")) {
                     
-                    System.out.println("Bases_de_Datos");
+                    if(conexionBD1.consultarUsuario(frmmu.devolverIdUsuario())) {
+                        
+                        frmmu.mostrarInfoPantalla(conexionBD1.devolverArregloUsuar());
+                        frmmu.habilitarBotones();
+                        frmmu.administrarCampos();
+                        
+                        
+                    }else {
+                        
+                        frmmu.habilitarAgregar();
+                        frmmu.administrarCampos();
+                        metodosUsuario.mensajeNoSeEncuentraUsuario();
+                        
+                    }
                     
                 }
+                
+                if(e.getActionCommand().equals("Agregar")) {
+                    
+                    conexionBD1.registrarUsuario(frmmu.devolverInfoUsuario());
+                    frmmu.limpiarCampos();
+                    frmmu.estadoInicialBotones();
+                    frmmu.estadoInicialCampos();
+                    metodosUsuario.mensajeUsuarioAgregado();
+                    
+                }
+                
+                if(e.getActionCommand().equals("Modificar")) {
+                    
+                    conexionBD1.actualizarUsuario(frmmu.devolverInfoUsuario());
+                    frmmu.limpiarCampos();
+                    frmmu.estadoInicialBotones();
+                    frmmu.estadoInicialCampos();
+                    metodosUsuario.mensajeModificado();
+                    
+                }
+                
+                if(e.getActionCommand().equals("Eliminar")) {
+                    
+                    conexionBD1.eliminarUsuario(frmmu.devolverInfoUsuario());
+                    frmmu.limpiarCampos();
+                    frmmu.estadoInicialBotones();
+                    frmmu.estadoInicialCampos();
+                    metodosUsuario.mensajeUsuarioEliminado();
+                    
+                }  
                 
                 break;
                 //Fin del caso Bases de Datos

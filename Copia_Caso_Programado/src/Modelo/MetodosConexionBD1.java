@@ -20,6 +20,7 @@ public class MetodosConexionBD1 {
     Connection con = null;
     public String infoEst[];
     public String infoCurso[];
+    public String infoUsuario[];
     public String nombreCurso;
     public String nombreEst;
     public int numeroFila = 0;
@@ -34,6 +35,7 @@ public class MetodosConexionBD1 {
                 
         infoEst = new String[2];
         infoCurso = new String[3];
+        infoUsuario = new String[5];
         
     }//Fin constructor
     
@@ -222,7 +224,7 @@ public class MetodosConexionBD1 {
     /*
     Elimina un estudiante de la base de datos
     */
-    public boolean eliminarCurso(String arregloInformacion[]) {
+    public boolean eliminarCurso(String sigla) {
         
         ResultSet rs=null;
         Statement cmd=null;
@@ -231,7 +233,7 @@ public class MetodosConexionBD1 {
         try
         {
             cmd=con.createStatement();
-            ejecutar= cmd.execute("DELETE FROM `cursos` WHERE sigla='"+arregloInformacion[0]+"'");
+            ejecutar= cmd.execute("DELETE FROM `cursos` WHERE sigla='"+sigla+"'");
             return true;
         }
         catch(Exception e)
@@ -245,25 +247,26 @@ public class MetodosConexionBD1 {
     /*
     Busca un estuddiante en la base de datos y guarda los valores un arreglo
     */
-    public void consultarCurso(String arregloInformacion[]) {
+    public boolean consultarCurso(String sigla) {
         
+        boolean existe = false;
         ResultSet rs = null;
         Statement cmd = null;
         String info[] = new String[4];
 
         try {
                 cmd = con.createStatement();
-                rs = cmd.executeQuery("SELECT sigla, nombre, creditos, horario FROM cursos WHERE sigla = '"+arregloInformacion[0]+"'");
+                rs = cmd.executeQuery("SELECT sigla, nombre, creditos, horario FROM cursos WHERE sigla = '"+sigla+"'");
                 
                 while (rs.next()) 
                 {
-                    
-                    info[0] = rs.getString("nombre");
-                    info[1] = ""+rs.getInt("creditos");
-                    info[2] = rs.getString("horario");
+                    info[0] = ""+sigla;
+                    info[1] = rs.getString("nombre");
+                    info[2] = ""+rs.getInt("creditos");
+                    info[3] = rs.getString("horario");
                     //int edad = rs.getInt(2);
                     this.infoCurso = info;
-                    
+                    existe = true;
                 }
                 rs.close();
         }
@@ -271,6 +274,8 @@ public class MetodosConexionBD1 {
         {
             System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
         }
+        
+        return existe;
         
     }//Fin consultarEmpleado
     
@@ -361,7 +366,121 @@ public class MetodosConexionBD1 {
     
     /*
     Registra un estudiante en la base de datos
-     */
+    */
+    public boolean registrarUsuario(String arregloInformacion[]) {
+        
+        ResultSet rs = null;
+        Statement cmd = null;
+        boolean ejecutar;
+        
+        try {
+                cmd = con.createStatement();
+                ejecutar = cmd.execute("INSERT INTO usuarios(idUsuario, nombreCompleto, nombreUsuario, contrasena, tipo) VALUES ('"+arregloInformacion[0]+"','"+arregloInformacion[1]+"','"+arregloInformacion[2]+"','"+arregloInformacion[3]+"','"+arregloInformacion[4]+"')");
+                
+               return true;
+               // rs.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
+            return false;
+        }
+        
+    }//Fin registrarEmpleado
+    
+    /*
+    Altualiza los datos de la base de datos o modifica un estudiante
+    */
+    public boolean actualizarUsuario(String arregloInformacion[]) {
+        
+        ResultSet rs=null;
+        Statement cmd=null;
+        boolean ejecutar;
+        
+        try
+        {
+            cmd=con.createStatement();
+            ejecutar= cmd.execute("UPDATE usuarios SET nombreCompleto='"+arregloInformacion[1]+"',nombreUsuario='"+arregloInformacion[2]+"',contrasena='"+arregloInformacion[3]+"', tipo='"+arregloInformacion[4]+"' WHERE idUsuario='"+arregloInformacion[0]+"'");
+            return true;
+        }
+        catch(Exception e)
+        {
+            System.out.println("SQLException ejecutando sentencia " + e.getMessage());
+            return false;
+        }
+        
+    }//Fin actualizarEstudiante
+    
+    /*
+    Elimina un estudiante de la base de datos
+    */
+    public boolean eliminarUsuario(String arregloInformacion[]) {
+        
+        ResultSet rs=null;
+        Statement cmd=null;
+        boolean ejecutar;
+        
+        try
+        {
+            cmd=con.createStatement();
+            ejecutar= cmd.execute("DELETE FROM `usuarios` WHERE idUsuario='"+arregloInformacion[0]+"'");
+            return true;
+        }
+        catch(Exception e)
+        {
+            System.out.println("SQLException ejecutando sentencia "+e.getMessage());
+            return false;
+        }
+        
+    }//Fin eliminarEstudiante
+    
+    /*
+    Busca un estuddiante en la base de datos y guarda los valores un arreglo
+    */
+    public boolean consultarUsuario(String idUsuario) {
+        
+        boolean existe = false;
+        ResultSet rs = null;
+        Statement cmd = null;
+        String info[] = new String[5];
+
+        try {
+                cmd = con.createStatement();
+                rs = cmd.executeQuery("SELECT nombre, direccion FROM estudiantes WHERE cedula = '"+idUsuario+"'");
+                
+                while (rs.next()) 
+                {
+                    info[0] = ""+idUsuario;
+                    info[1] = rs.getString("nombreCompleto");
+                    info[2] = rs.getString("nombreUsuario");
+                    info[3] = rs.getString("contrasena");
+                    info[4] = rs.getString("tipo");
+                    //int edad = rs.getInt(2);
+                    this.infoEst = info;
+                    existe = true;
+                    
+                }
+                
+                rs.close();
+                
+        }
+        catch(Exception e)
+        {
+            System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
+        }
+        
+        return existe;
+       
+    }//Fin consultarEmpleado
+
+    /*
+    Retorna el arreglo con la información del estudiante
+    */
+    public String[] devolverArregloUsuar() {
+        
+        return this.infoUsuario;
+        
+    }//Fin devolverArregloInformacion
     
     /*
     

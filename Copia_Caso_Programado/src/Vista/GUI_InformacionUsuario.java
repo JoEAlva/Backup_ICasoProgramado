@@ -4,16 +4,15 @@
  * and open the template in the editor.
  */
 package Vista;
-
 /**
  *
  * @author JorgeIgnacioElizondoAlvarado
  */
 public class GUI_InformacionUsuario extends javax.swing.JPanel {
 
-    /**
-     * Creates new form JPane_InformacionUsuario
-     */
+    //Referencias
+    
+    
     public GUI_InformacionUsuario() {
         initComponents();
         llenarComboBox();
@@ -33,15 +32,20 @@ public class GUI_InformacionUsuario extends javax.swing.JPanel {
         return arregloUsuario;
     }
     
+    public String devolverIdUsuario() {
+        return this.jT_IdUsuario.getText();
+    }
+    
     /*
     Método que recibe un arreglo para mostrar los datos del usuario en pantalla
     */
     public void mostrarInfoPantalla(String arregloUsuario[])
     {
-        this.jT_NombreCompleto.setText(arregloUsuario[0]);
-        this.jT_NombreUsuario.setText(arregloUsuario[1]);
-        this.jT_Contrasena.setText(arregloUsuario[2]);
-        this.jC_TipoUsuario.setSelectedIndex(Integer.parseInt(arregloUsuario[3]));
+        this.jT_IdUsuario.setText(arregloUsuario[0]);
+        this.jT_NombreCompleto.setText(arregloUsuario[1]);
+        this.jT_NombreUsuario.setText(arregloUsuario[2]);
+        this.jT_Contrasena.setText(arregloUsuario[3]);
+        this.jC_TipoUsuario.setSelectedIndex(Integer.parseInt(arregloUsuario[4]));
     }
     
     /*
@@ -76,6 +80,28 @@ public class GUI_InformacionUsuario extends javax.swing.JPanel {
             
         }
         this.jC_TipoUsuario.setSelectedIndex(2);
+    }
+    
+    /*
+    Método que hablita los campos para editarlos
+    */
+    public void estadoInicialCampos() {
+        this.jT_IdUsuario.setEnabled(true);
+        this.jT_NombreCompleto.setEnabled(false);
+        this.jT_NombreUsuario.setEnabled(false);
+        this.jT_Contrasena.setEnabled(false);
+        this.jC_TipoUsuario.setEnabled(false);
+    }
+    
+    /*
+    
+    */
+    public void administrarCampos() {
+        this.jT_IdUsuario.setEnabled(false);
+        this.jT_NombreCompleto.setEnabled(true);
+        this.jT_NombreUsuario.setEnabled(true);
+        this.jT_Contrasena.setEnabled(true);
+        this.jC_TipoUsuario.setEnabled(true);
     }
     
     /*

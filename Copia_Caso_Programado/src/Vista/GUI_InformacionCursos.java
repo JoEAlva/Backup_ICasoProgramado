@@ -5,15 +5,18 @@
  */
 package Vista;
 
+
+import Controlador.Controlador_FRM_MantenimientoCursos;
+
 /**
  *
  * @author JorgeIgnacioElizondoAlvarado
  */
 public class GUI_InformacionCursos extends javax.swing.JPanel {
 
-    /**
-     * Creates new form GUI_InformacionCursos
-     */
+    //Referenciass
+    Controlador_FRM_MantenimientoCursos cfrmmc;
+    
     public GUI_InformacionCursos() {
         initComponents();
         cargarCreditos();
@@ -25,6 +28,10 @@ public class GUI_InformacionCursos extends javax.swing.JPanel {
             this.jcb_Creditos.addItem(""+contador);
         }
         this.jcb_Creditos.setSelectedIndex(5);
+    }
+    
+    public void agregarFuncionConsultaRapida(Controlador_FRM_MantenimientoCursos cfrmmc) {
+        this.cfrmmc = cfrmmc;
     }
     public String[] devolverInformacion(){
         String arreglo[];
@@ -96,6 +103,12 @@ public class GUI_InformacionCursos extends javax.swing.JPanel {
 
         jl_Horario.setText("Horario");
 
+        jt_Sigla.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jt_SiglaKeyPressed(evt);
+            }
+        });
+
         jcb_Creditos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -140,6 +153,15 @@ public class GUI_InformacionCursos extends javax.swing.JPanel {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jt_SiglaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jt_SiglaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == 10) {
+            
+            this.cfrmmc.consultaRapida();
+            
+        }
+    }//GEN-LAST:event_jt_SiglaKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

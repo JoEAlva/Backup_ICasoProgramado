@@ -125,6 +125,7 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener{
                         frmmc.mostrarInformacion(xmlc.getArregloInformacion());
                         frmmc.habilitarAgregar();
                         frmmc.habilitarBotones();
+                        frmmc.habilitarCampos();
                         
                         
                     }else {
@@ -176,23 +177,49 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener{
                 
                 if(e.getActionCommand().equals("Consultar")) {
                     
-                    
+                    if(conexionBD1.consultarCurso(frmmc.devolverSigla())) {
+                        
+                        frmmc.mostrarInformacion(conexionBD1.devolverArregloCurso());
+                        frmmc.habilitarCampos();
+                        frmmc.habilitarBotones();
+                        
+                    }else {
+                        
+                        metodosCursos.mensajeConsultar();
+                        frmmc.habilitarAgregar();
+                        frmmc.habilitarCampos();
+                        
+                    }
                     
                 }
                 
                 if(e.getActionCommand().equals("Agregar")) {
                     
-                    
+                    conexionBD1.registrarCurso(frmmc.devolverInformacion());
+                    frmmc.limpiarCampos();
+                    frmmc.estadoInicialBotones();
+                    frmmc.estadoInicialCampos();
+                    metodosCursos.mensajeCursoAgregado();
                     
                 }
                 
                 if(e.getActionCommand().equals("Modificar")) {
                     
-                    
+                    conexionBD1.actualizarCurso(frmmc.devolverInformacion());
+                    frmmc.limpiarCampos();
+                    frmmc.estadoInicialBotones();
+                    frmmc.estadoInicialCampos();
+                    metodosCursos.mensajeCursoModificado();
                     
                 }
                 
                 if(e.getActionCommand().equals("Eliminar")) {
+                    
+                    conexionBD1.eliminarCurso(frmmc.devolverSigla());
+                    frmmc.limpiarCampos();
+                    frmmc.estadoInicialBotones();
+                    frmmc.estadoInicialCampos();
+                    metodosCursos.mensajeCursoEliminado();
                     
                 }
                 
@@ -202,5 +229,74 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener{
         }//Fin del switch
         
     }//Fin del método actionPerformed
+    
+    public void consultaRapida() {
+        
+        //Inicio del switch
+        switch(this.sistemaInfo) {
+            
+            //En el caso que fuera ArchivosPlanos
+            case "ArchivosPlanos":
+                
+                if(conexionBD1.consultarCurso(frmmc.devolverSigla())) {
+                        
+                        frmmc.mostrarInformacion(conexionBD1.devolverArregloCurso());
+                        frmmc.habilitarCampos();
+                        frmmc.habilitarBotones();
+                        
+                    }else {
+                        
+                        metodosCursos.mensajeConsultar();
+                        frmmc.habilitarAgregar();
+                        frmmc.habilitarCampos();
+                        
+                    }
+                
+                break;
+                
+            //En el caso que fuera XML
+            case "XML":
+                
+                if(xmlc.consultarInformacionDelXml(frmmc.devolverSigla())) {
+                        
+                        frmmc.mostrarInformacion(xmlc.getArregloInformacion());
+                        frmmc.habilitarAgregar();
+                        frmmc.habilitarBotones();
+                        frmmc.habilitarCampos();
+                        
+                        
+                    }else {
+                        
+                        metodosCursos.mensajeConsultar();
+                        frmmc.habilitarAgregar();
+                        frmmc.habilitarCampos();
+                        frmmc.habilitarAgregar();
+                        
+                    }
+                
+                break;
+                
+            //En el caso que fuera Bases_de_Datos
+            case "Bases_de_Datos":
+                
+                if(conexionBD1.consultarCurso(frmmc.devolverSigla())) {
+                        
+                        frmmc.mostrarInformacion(conexionBD1.devolverArregloCurso());
+                        frmmc.habilitarCampos();
+                        frmmc.habilitarBotones();
+                        
+                    }else {
+                        
+                        metodosCursos.mensajeConsultar();
+                        frmmc.habilitarAgregar();
+                        frmmc.habilitarCampos();
+                        
+                    }
+                
+                break;
+            
+        }//Fin del switch
+        
+    }
     
 }//Fin de la clase Controlador_FRM_MantenimientoCurso

@@ -145,7 +145,7 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
                     frmme.limpiarCampos();
                     frmme.estadoInicialBotones();
                     frmme.estadoInicialCampos();
-//                    metodosEstudiantes.mensajeEstudianteAgregado();
+                    metodosEstudiantes.mensajeEstudianteAgregado();
                     
                 }
                 
@@ -155,7 +155,7 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
                     frmme.limpiarCampos();
                     frmme.estadoInicialBotones();
                     frmme.estadoInicialCampos();
-//                    metodosEstudiantes.mensajeEstudianteModificado();
+                    metodosEstudiantes.mensajeEstudianteModificado();
                     
                 }
                 
@@ -199,7 +199,7 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
                     frmme.limpiarCampos();
                     frmme.estadoInicialBotones();
                     frmme.estadoInicialCampos();
-//                    metodosEstudiantes.mensajeEstudianteAgregado(); 
+                    metodosEstudiantes.mensajeEstudianteAgregado(); 
                     
                 }
                 
@@ -209,7 +209,7 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
                     frmme.limpiarCampos();
                     frmme.estadoInicialBotones();
                     frmme.estadoInicialCampos();
-//                    metodosEstudiantes.mensajeEstudianteModificado();
+                    metodosEstudiantes.mensajeEstudianteModificado();
                     
                 }
                 
@@ -219,7 +219,7 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
                     frmme.limpiarCampos();
                     frmme.estadoInicialBotones();
                     frmme.estadoInicialCampos();
-//                    metodosEstudiantes.mensajeEstudianteEliminado();
+                    metodosEstudiantes.mensajeEstudianteEliminado();
                     
                 }
                 

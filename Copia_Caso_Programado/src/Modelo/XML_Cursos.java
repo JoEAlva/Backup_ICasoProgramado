@@ -54,12 +54,12 @@ public class XML_Cursos {
         
         if(cargarXML())
         {
-            //frmmc.mostrarMensaje("Ya existe un archivo XML creado, ya fue cargado y puede proceder a utilizarlo");
+//            frmmc.mostrarMensaje("Ya existe un archivo XML_Cursos creado, ya fue cargado y puede proceder a utilizarlo");
         }
         else
         {
             crearXML();
-            //frmmc.mostrarMensaje("No existía un archivo XML creado, ya fue creado y puede proceder a utilizarlo");
+//            frmmc.mostrarMensaje("No existía un archivo XML_Cursos creado, ya fue creado y puede proceder a utilizarlo");
         }
         
         arregloInformacion=new String[4];
@@ -111,7 +111,7 @@ public class XML_Cursos {
         return cargo;
     }
     
-    public void guardarEnXML(String arregloInformacion[])//Método nuevo en pruebas
+    public void guardarEnXML(String arregloInformacion[])
     {
         try{
             

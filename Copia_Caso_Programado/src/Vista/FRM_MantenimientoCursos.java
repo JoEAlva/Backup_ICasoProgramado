@@ -30,11 +30,13 @@ public class FRM_MantenimientoCursos extends javax.swing.JFrame {
         this.sistemaInfo = sistemaInfo;
         controlador = new Controlador_FRM_MantenimientoCursos(this, this.sistemaInfo, this.conexionBD1);
         this.gUI_Botones1.agregarEventos(controlador);
+        this.gUI_InformacionCursos1.agregarFuncionConsultaRapida(controlador);
         estadoInicialBotones();
         estadoInicialCampos();
         
     }//Fin del constructor de la clase
-        
+    
+    
     public String[] devolverInformacion(){
         return this.gUI_InformacionCursos1.devolverInformacion();
     }

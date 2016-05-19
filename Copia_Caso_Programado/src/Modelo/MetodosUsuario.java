@@ -28,7 +28,7 @@ public class MetodosUsuario
     public MetodosUsuario(ArchivosUsuario archivosUsuario)
     {
         arrayUsuario = new ArrayList<Usuario>();
-        arregloUsuario = new String[4];
+        arregloUsuario = new String[5];
         this.archivosUsuario = archivosUsuario;
     }//Fin del constructor
     
@@ -44,10 +44,11 @@ public class MetodosUsuario
         {
             if(arrayUsuario.get(j).getIdUsuario().equals(arregloInfo[0]))
             {
-                arregloUsuario[0] = arrayUsuario.get(j).getNombreCompleto();
-                arregloUsuario[1] = arrayUsuario.get(j).getNombreUsuario();
-                arregloUsuario[2] = arrayUsuario.get(j).getContrasena();
-                arregloUsuario[3] = arrayUsuario.get(j).getTipo();
+                arregloUsuario[0] = arrayUsuario.get(j).getIdUsuario();
+                arregloUsuario[1] = arrayUsuario.get(j).getNombreCompleto();
+                arregloUsuario[2] = arrayUsuario.get(j).getNombreUsuario();
+                arregloUsuario[3] = arrayUsuario.get(j).getContrasena();
+                arregloUsuario[4] = arrayUsuario.get(j).getTipo();
                 exist = true;
                 j=arrayUsuario.size();
             }
@@ -100,11 +101,11 @@ public class MetodosUsuario
     Método que elimina un usuario del ArrayList arrayUsuario
     @param arregloInfo Un arreglo que contiene la información del usuario
     */
-    public void eliminarUsuario(String arregloInfo[])
+    public void eliminarUsuario(String idUsuario)
     {
         for(int j=0; j<arrayUsuario.size(); j++)
         {
-            if(arrayUsuario.get(j).equals(arregloInfo[0]))
+            if(arrayUsuario.get(j).getIdUsuario().equals(idUsuario))
             {
                 arrayUsuario.remove(j);
                 mensajejUsuario();
@@ -125,10 +126,31 @@ public class MetodosUsuario
     /*
     Método que muestra un mensaje al usuario en pantalla
     */
-    public void mensajeConsultar()
+    public void mensajeUsuarioAgregado()
+    {
+        JOptionPane.showMessageDialog(null, "El usuario fue"
+                        + " agregado en el registrado.", "Universidad de"
+                                + " Costa Rica", JOptionPane.OK_OPTION);
+    }//Fin de mensajeConsultar
+    
+    public void mensajeNoSeEncuentraUsuario()
     {
         JOptionPane.showMessageDialog(null, "El usuario no"
                         + " se encuentra registrado.", "Universidad de"
+                                + " Costa Rica", JOptionPane.OK_OPTION);
+    }//Fin de mensajeConsultar
+    
+    public void mensajeUsuarioEliminado()
+    {
+        JOptionPane.showMessageDialog(null, "El usuario fue"
+                        + " eliminado en el registro.", "Universidad de"
+                                + " Costa Rica", JOptionPane.OK_OPTION);
+    }//Fin de mensajeConsultar
+    
+    public void mensajeModificado()
+    {
+        JOptionPane.showMessageDialog(null, "El usuario fue"
+                        + " modificado en el registro.", "Universidad de"
                                 + " Costa Rica", JOptionPane.OK_OPTION);
     }//Fin de mensajeConsultar
     

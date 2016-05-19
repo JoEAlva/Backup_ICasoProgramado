@@ -7,6 +7,7 @@ package Vista;
 
 import Controlador.Controlador_FRM_MantenimientoUsuarios;
 import Modelo.MetodosConexionBD1;
+import javax.swing.JOptionPane;
 /**
  *
  * @author JorgeIgnacioElizondoAlvarado
@@ -27,7 +28,9 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
         this.sistemaInfo = sistemaInfo;
         controlador_FRM_MantenimientoUsuarios = new Controlador_FRM_MantenimientoUsuarios(this, this.sistemaInfo,  this.conexionBD1);
         this.gUI_Botones1.agregarEventos(controlador_FRM_MantenimientoUsuarios);            
-    
+        this.gUI_Botones1.estadoInicialBotones();
+        this.gUI_InformacionUsuario2.estadoInicialCampos();
+        
     }
     
     /*
@@ -36,6 +39,26 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
     public String[] devolverInfoUsuario()
     {
         return this.gUI_InformacionUsuario2.devolverInfoUsuario();
+    }
+    
+    public String devolverIdUsuario() {
+        return this.gUI_InformacionUsuario2.devolverIdUsuario();
+    }
+    
+    
+    
+    /*
+    
+    */
+    public void estadoInicialCampos() {
+        this.gUI_InformacionUsuario2.estadoInicialCampos();
+    }
+    
+    /*
+    
+    */
+    public void administrarCampos() {
+        this.gUI_InformacionUsuario2.administrarCampos();
     }
     
     /*
@@ -49,9 +72,28 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
     /*
     
     */
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
+    
+    /*
+    
+    */
     public void limpiarCampos()
     {
         this.gUI_InformacionUsuario2.limpiarCampos();
+    }
+    
+    public void habilitarBotones() {
+        this.gUI_Botones1.habilitarBotones();
+    }
+    
+    public void habilitarAgregar() {
+        this.gUI_Botones1.habilitarAgregar();
+    }
+    
+    public void estadoInicialBotones() {
+        this.gUI_Botones1.estadoInicialBotones();
     }
 
     /**
