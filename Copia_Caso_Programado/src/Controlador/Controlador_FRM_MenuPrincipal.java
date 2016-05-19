@@ -12,7 +12,7 @@ import Vista.FRM_MantenimientoEstudiantes;
 import Vista.FRM_MantenimientoCursos;
 import Vista.FRM_Matricula;
 import Vista.FRM_MantenimientoUsuarios;
-import Vista.FRM_MantenimientoUsuarios;
+import Vista.FRM_LoginUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,10 +29,12 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener{
     Manejador_Ventanas manejador_Clases;
     MetodosConexionBD1 conexionBD1;
     FRM_SistemaInformacion fRM_SistemaInformacion;
-    FRM_MantenimientoEstudiantes mantenimientoEstudiantes;
-    FRM_MantenimientoCursos mantenimientoCursos;
-    FRM_Matricula matricula;
+    FRM_MantenimientoEstudiantes fRM_MantenimientoEstudiantes;
+    FRM_MantenimientoCursos fRM_MantenimientoCursos;
+    FRM_LoginUsuario fRM_LoginUsuario;
+    FRM_Matricula fRM_Matricula;
     FRM_MantenimientoUsuarios fRM_MantenimientoUsuarios; 
+    
     
     public Controlador_FRM_MenuPrincipal(Manejador_Ventanas manejador_Clases)
     {
@@ -54,10 +56,12 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener{
     {
         
         this.sistemaInformacion=sistemaInformacion;
-        mantenimientoEstudiantes=new FRM_MantenimientoEstudiantes(this.sistemaInformacion, conexionBD1);
-        mantenimientoCursos=new FRM_MantenimientoCursos(this.sistemaInformacion, this.conexionBD1);
+        fRM_LoginUsuario = new FRM_LoginUsuario(this.sistemaInformacion);
+        fRM_MantenimientoEstudiantes=new FRM_MantenimientoEstudiantes(this.sistemaInformacion, conexionBD1);
+        fRM_MantenimientoCursos=new FRM_MantenimientoCursos(this.sistemaInformacion, this.conexionBD1);
         fRM_MantenimientoUsuarios = new FRM_MantenimientoUsuarios(this.sistemaInformacion, conexionBD1);
-        matricula= new FRM_Matricula(mantenimientoEstudiantes,mantenimientoCursos, conexionBD1, this.sistemaInformacion);     
+        fRM_Matricula= new FRM_Matricula(fRM_MantenimientoEstudiantes,fRM_MantenimientoCursos, conexionBD1, this.sistemaInformacion);
+        
         
     }
     
@@ -69,17 +73,17 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener{
         }
         if(e.getActionCommand().equals("Estudiantes"))
         {
-            this.mantenimientoEstudiantes.setVisible(true);
+            this.fRM_MantenimientoEstudiantes.setVisible(true);
             
         }
         if(e.getActionCommand().equals("Cursos"))
         {
-            this.mantenimientoCursos.setVisible(true);
+            this.fRM_MantenimientoCursos.setVisible(true);
         }
         if(e.getActionCommand().equals("Matricula"))
         {
-            this.matricula.setVisible(true);
-            this.matricula.colocarCodigo();
+            this.fRM_Matricula.setVisible(true);
+            this.fRM_Matricula.colocarCodigo();
         }
         if(e.getActionCommand().equals("Usuarios"))
         {

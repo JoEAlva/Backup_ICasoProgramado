@@ -121,8 +121,8 @@ public class FRM_SistemaInformacion extends javax.swing.JFrame {
             sistemaInfo = "Bases_de_Datos";
                                 
         }        
-        setVisible(false);//Oculta FRM_SistemaInformacion al ser pulsado el botón "Aceptar"                     
-        frmmp.setVisible(true);//Muestra FRM_MenuPrincipal al ser pulsado el botón "Aceptar"
+//        setVisible(false);//Oculta FRM_SistemaInformacion al ser pulsado el botón "Aceptar"                     
+//        frmmp.setVisible(true);//Muestra FRM_MenuPrincipal al ser pulsado el botón "Aceptar"
         frmmp.seleccionarFuenteDeInformacion();//Método que 
                                             
     }//GEN-LAST:event_jB_AceptarActionPerformed

@@ -23,6 +23,7 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
     Controlador_FRM_MenuPrincipal controlador_FRM_MenuPrincipal;
     Manejador_Ventanas manejador_Clases;
     FRM_SistemaInformacion frmsi;
+    FRM_LoginUsuario fRM_LoginUsuario;
     
     //Constructor de la clase
     public FRM_MenuPrincipal() {
@@ -30,7 +31,6 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocation(100, 100);
         frmsi = new FRM_SistemaInformacion(this);
-        
         manejador_Clases = new Manejador_Ventanas(this, frmsi);
         controlador_FRM_MenuPrincipal = new Controlador_FRM_MenuPrincipal(manejador_Clases);
               

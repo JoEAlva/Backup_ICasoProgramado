@@ -7,7 +7,7 @@ package Modelo;
 
 import Vista.FRM_MenuPrincipal;
 import Vista.FRM_SistemaInformacion;
-import Vista.FRM_MantenimientoEstudiantes;
+import Vista.FRM_LoginUsuario;
 
 /**
  *
@@ -17,14 +17,16 @@ public class Manejador_Ventanas {
 
     //Referencias 
     FRM_MenuPrincipal frmmp; //Referencia a ala clase FRM_MenuPrincipal
-    FRM_SistemaInformacion frmsi;//Referencia a ala clase FRM_SistemaInformacion
-    FRM_MantenimientoEstudiantes frmme;//Referencia a ala clase FRM_MantenimientoEstudiantes
+    FRM_SistemaInformacion frmsi;//Referencia a la clase FRM_SistemaInformacion
+    FRM_LoginUsuario frmlu;//Referencia a la clase FRM_LoginUsuario
+
 
     //Constructor de la clase
     public Manejador_Ventanas(FRM_MenuPrincipal frmmp, FRM_SistemaInformacion frmsi) {
         
         this.frmmp = frmmp;
         this.frmsi = frmsi;
+        
         
     }//Fin del constructor de la clase
     
