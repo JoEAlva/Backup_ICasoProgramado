@@ -31,14 +31,14 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener{
     
     public Controlador_FRM_MantenimientoCursos(FRM_MantenimientoCursos frmmc, String sistemaInfo, MetodosConexionBD1 conexionBD1)//Constructor
     {
-        this.conexionBD1 = conexionBD1;
-        this.conexionBD1.realizarConexion();
+        //Se iguala sistemaInfo al valos sistemaInfo que entra por parámetro
         this.sistemaInfo = sistemaInfo;
+        //Hace referencia a FRM_MantenimientoCursos
         this.frmmc= frmmc;
-        xmlc = new XML_Cursos(frmmc);
+        
         cursosArchivos = new ArchivosCursos();
         metodosCursos = new MetodosCursos(cursosArchivos);
-                
+
         if(cursosArchivos.cargarInfoCursosArchivo())
         {
             System.out.println("Se cargó el archivo curso(controlador)");
@@ -47,9 +47,14 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener{
         {
             System.out.println("No se cargó el archivo curso(controlador)");
         }
-        
+
         metodosCursos.arrayCursos = cursosArchivos.leerInfoCursosArchivo();
-        
+              
+        xmlc = new XML_Cursos(frmmc);
+              
+        this.conexionBD1 = conexionBD1;
+        this.conexionBD1.realizarConexion();
+             
     } 
     
     /*

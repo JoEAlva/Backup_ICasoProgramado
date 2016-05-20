@@ -5,6 +5,11 @@
  */
 package Vista;
 import Controlador.Controlador_FRM_LoginUsuario;
+import Vista.FRM_MantenimientoUsuarios;
+import Modelo.MetodosConexionBD1;
+import Modelo.MetodosUsuario;
+import Modelo.Manejador_Ventanas;
+
 /**
  *
  * @author JorgeIgnacio
@@ -16,16 +21,57 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
     
     //Referencias
     FRM_MenuPrincipal fRM_MenuPrincipal;
+    FRM_MantenimientoUsuarios fRM_MantenimientoUsuarios;
+    MetodosConexionBD1 metodosConexionBD1;
     Controlador_FRM_LoginUsuario controlador_FRM_LoginUsuario;
+    MetodosUsuario metodosUsuario;
+    Manejador_Ventanas manejador_Ventanas;
+    
+    
     
     /**
      * Constructor de la clase
      */
-    public FRM_LoginUsuario(String sistemaInfo) {
+    public FRM_LoginUsuario(String sistemaInfo, MetodosConexionBD1 metodosConexionBD1, FRM_MantenimientoUsuarios fRM_MantenimientoUsuarios, Manejador_Ventanas manejador_Ventanas) {
+        
         initComponents();
+        setLocation(450, 200);
+        this.manejador_Ventanas = manejador_Ventanas;
+        this.fRM_MantenimientoUsuarios = fRM_MantenimientoUsuarios;
+        this.metodosConexionBD1 = metodosConexionBD1;
         this.sistemaInformacion = sistemaInfo;
-        controlador_FRM_LoginUsuario = new Controlador_FRM_LoginUsuario(this, this.sistemaInformacion);
+        
+        controlador_FRM_LoginUsuario = new Controlador_FRM_LoginUsuario(this, this.sistemaInformacion, this.metodosConexionBD1, this.metodosUsuario, this.fRM_MantenimientoUsuarios, this.manejador_Ventanas);
+        agregarEventoBtn();
+        
     }
+    
+    
+    
+    /*
+    Agrega las funciones al botón
+    */
+    public void agregarEventoBtn() {
+        this.jB_Entrar.addActionListener(controlador_FRM_LoginUsuario);
+    }
+    
+    /*
+    Método que extrae los datos de los campos
+    */
+    public String[] getInfoLogin() {
+        
+        String arrayInfo[] = new String[2];
+        
+        char[] arrayC = this.jP_Contrasena.getPassword();
+        String pass = new String(arrayC);
+        
+        arrayInfo[0] = this.jT_Usuario.getText();
+        arrayInfo[1] = pass;
+        
+        return arrayInfo;
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,14 +91,11 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jB_Entrar.setText("Entrar al Sistema");
+        jB_Entrar.setActionCommand("Entrar");
 
         jL_Usuario.setText("Usuario");
 
         jL_Contrasena.setText("Contraseña");
-
-        jT_Usuario.setText("jTextField1");
-
-        jP_Contrasena.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -56,10 +56,11 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener{
     {
         
         this.sistemaInformacion=sistemaInformacion;
-        fRM_LoginUsuario = new FRM_LoginUsuario(this.sistemaInformacion);
         fRM_MantenimientoEstudiantes=new FRM_MantenimientoEstudiantes(this.sistemaInformacion, conexionBD1);
         fRM_MantenimientoCursos=new FRM_MantenimientoCursos(this.sistemaInformacion, this.conexionBD1);
-        fRM_MantenimientoUsuarios = new FRM_MantenimientoUsuarios(this.sistemaInformacion, conexionBD1);
+        fRM_MantenimientoUsuarios = new FRM_MantenimientoUsuarios(this.sistemaInformacion, conexionBD1, fRM_LoginUsuario);
+        fRM_LoginUsuario = new FRM_LoginUsuario(this.sistemaInformacion, this.conexionBD1, fRM_MantenimientoUsuarios, this.manejador_Clases);
+//        fRM_LoginUsuario = new FRM_LoginUsuario(this.sistemaInformacion, this.conexionBD1);
         fRM_Matricula= new FRM_Matricula(fRM_MantenimientoEstudiantes,fRM_MantenimientoCursos, conexionBD1, this.sistemaInformacion);
         
         

@@ -70,6 +70,7 @@
     <Component class="javax.swing.JButton" name="jB_Entrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Entrar al Sistema"/>
+        <Property name="actionCommand" type="java.lang.String" value="Entrar"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jL_Usuario">
@@ -83,14 +84,8 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jT_Usuario">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jP_Contrasena">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

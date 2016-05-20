@@ -37,21 +37,29 @@ public class Controlador_FRM_Matricula implements ActionListener{
     
     public Controlador_FRM_Matricula(FRM_MantenimientoEstudiantes mantenimientoEstudiantes,FRM_MantenimientoCursos mantenimientoCursos,FRM_Matricula frm_Matricula, MetodosConexionBD1 conexionBD1, String sistemaInfo)
     {
+        //Se iguala sistemaInfo al valos sistemaInfo que entra por parámetro
         this.sistemaInfo = sistemaInfo;
-        this.conexionBD1 = conexionBD1;
+        //Hace referencia a FRM_MantenimientoUsuarios
+        this.frm_Matricula=frm_Matricula;
+
         this.metodosCursos=mantenimientoCursos.controlador.metodosCursos;
         this.metodosEstudiantes=mantenimientoEstudiantes.controlador_FRM_MantenimientoEstudiantes.metodosEstudiantes;
-        this.frm_Matricula=frm_Matricula;
+
         metodosMatricula=new MetodosMatricula();
         archivosMatricula = new ArchivosMatricula();
-        
+
         if(archivosMatricula.cargarInfoArchivoMatricula())
         {
             System.out.println("Se cargó correctamente el archivo matrícula(controlador)");
         }else
         {
             System.out.println("Error al cargar el archivo matrícula(controlador)");
-        }
+        }      
+              
+        //XML
+        
+        this.conexionBD1 = conexionBD1;
+        this.conexionBD1.realizarConexion();
         
     }
     

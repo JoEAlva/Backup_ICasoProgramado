@@ -155,6 +155,17 @@ public class MetodosUsuario
     }//Fin de mensajeConsultar
     
     /*
+    
+    */
+    public void mensajeRegistrarUsuario()
+    {
+        JOptionPane.showMessageDialog(null, "No hay usuarios"
+                        + " registrados. Por favor ingrese uno nuevo", "Universidad de"
+                                + " Costa Rica", JOptionPane.OK_OPTION);
+    }//Fin de mensajeRegistrarUsuario
+   
+    
+    /*
     Método que ejecuta una llamado a un método para crear un archivo de tipo
     Usurio. Recorre el ArrayList arrayUsuario para que la llamada al método
     escribirArchivoUsuario lea el archivo binario.
@@ -171,12 +182,21 @@ public class MetodosUsuario
     /*
     
     */
-    public void verificarUsuario(String arregloInfo[])
+    public boolean verificarUsuario(String arregloLogin[])
     {
+        boolean existe = false;
         for(int i=0; i<arrayUsuario.size(); i++)
         {
-            
+            if(arrayUsuario.get(i).getNombreUsuario().equals(arregloLogin[0]) && arrayUsuario.get(i).getContrasena().equals(arregloLogin[1])) {
+                
+                existe = true;
+                System.err.println("Usuario encontrado " + arrayUsuario.get(i).getNombreUsuario() +" "+ arrayUsuario.get(i).getContrasena().equals(arregloLogin[1]));
+                
+            }
         }
+        
+        return existe;
+        
     }//Fin de verificarUsuario
     
     

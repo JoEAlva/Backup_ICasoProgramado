@@ -34,14 +34,14 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
     //Constructor de la clase
     public Controlador_FRM_MantenimientoEstudiantes(FRM_MantenimientoEstudiantes frmme, String sistemaInfo, MetodosConexionBD1 conexionBD1)
     {
-        this.frmme=frmme;
+        //Se iguala sistemaInfo al valos sistemaInfo que entra por parámetro
         this.sistemaInfo = sistemaInfo;
-        this.conexionBD1 = conexionBD1;
-        this.conexionBD1.realizarConexion();
-        mxml = new XML_Estudiantes(this.frmme);
+        //Hace referencia a FRM_MantenimientoEstudiantes
+        this.frmme=frmme;
+        
         estudianteArchivos = new ArchivosEstudiante();
         metodosEstudiantes = new MetodosEstudiantes(estudianteArchivos);
-                        
+
         if(estudianteArchivos.cargarInfoArchivoEstudiante())
         {
             System.out.println("Se cargó el archivo estudiante correctamente");
@@ -49,18 +49,23 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
         {
             System.out.println("Error al cargar el archivo estudiante(controlador)");
         }
-        
+
+        //Iguala arrayUsuario a los valores retornados
         metodosEstudiantes.arrayEstudiantes = estudianteArchivos.leerInfoArchivoEstudiante();
-        
-    }
+
+        mxml = new XML_Estudiantes(this.frmme);
+
+        this.conexionBD1 = conexionBD1;
+        this.conexionBD1.realizarConexion();
+             
+    }//Fin del constructor de la clase
     
     /*
     Método que evalua las siguientes condiciones 
     */
     public void actionPerformed(ActionEvent e)
     {
-        
-      
+       
         //Inicio del switch
         switch(this.sistemaInfo) {
             
@@ -288,7 +293,7 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
                         
                     }else {
                         
-                        metodosEstudiantes.mensajeConsultar();
+//                        metodosEstudiantes.mensajeConsultar();
                         frmme.habilitarAgregar();
                         frmme.administrarCampos();
                         

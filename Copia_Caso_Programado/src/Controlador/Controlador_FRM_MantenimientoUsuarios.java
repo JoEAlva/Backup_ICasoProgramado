@@ -9,6 +9,7 @@ import Modelo.MetodosUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Vista.FRM_MantenimientoUsuarios;
+import Vista.FRM_LoginUsuario;
 import Modelo.ArchivosUsuario;
 import Modelo.MetodosConexionBD1;
 import Modelo.XML_Usuarios;
@@ -23,6 +24,7 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
     
     // Referencias
     FRM_MantenimientoUsuarios frmmu;
+    FRM_LoginUsuario fRM_LoginUsuario;
     public MetodosUsuario metodosUsuario;
     ArchivosUsuario archivosUsuario;
     MetodosConexionBD1 conexionBD1;
@@ -30,31 +32,43 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
     
         
     // Contructor de la clase
-    public Controlador_FRM_MantenimientoUsuarios(FRM_MantenimientoUsuarios frmmu, String sistemaInfo, MetodosConexionBD1 conexionBD1) {
+    public Controlador_FRM_MantenimientoUsuarios(FRM_MantenimientoUsuarios frmmu, String sistemaInfo, MetodosConexionBD1 conexionBD1, FRM_LoginUsuario fRM_LoginUsuario) {
         
-        this.conexionBD1 = conexionBD1;
-        this.conexionBD1.realizarConexion();
+        this.fRM_LoginUsuario = fRM_LoginUsuario;
+        
+        //Se iguala sistemaInfo al valos sistemaInfo que entra por parámetro
         this.sistemaInfo = sistemaInfo;
+        //Hace referencia a FRM_MantenimientoUsuarios
         this.frmmu=frmmu;
+
+        
+        
         archivosUsuario = new ArchivosUsuario();
-        metodosUsuario=new MetodosUsuario(archivosUsuario);
-        xML_Usuarios = new XML_Usuarios(this.frmmu);
+        metodosUsuario  = new MetodosUsuario(archivosUsuario);
         
         if(archivosUsuario.cargarArchivoUsuario())
         {
-            System.out.println("Se cargó el archivo usuario correctamente(controlador)");
+             System.out.println("Se cargó el archivo usuario correctamente(controlador)");
+             this.fRM_LoginUsuario.setVisible(true);
         }
         else
         {
-            System.out.println("Error al cargar el archivo usuario(controlador)");
+            //Si no existe archivo creado con
+             System.out.println("Error al cargar el archivo usuario(controlador)");
+             metodosUsuario.mensajeRegistrarUsuario();
+             frmmu.setVisible(true);
         }
+
+        //Iguala arrayUsuario a los valores retornados 
         metodosUsuario.arrayUsuario = archivosUsuario.leerArchivoUsuario();
+
+        xML_Usuarios = new XML_Usuarios(this.frmmu);
+    
+        this.conexionBD1 = conexionBD1;
+        this.conexionBD1.realizarConexion();
 
     }//Fin del constructor
     
-    /*
-    Método que evalua las siguientes condiciones 
-    */
     public void actionPerformed(ActionEvent e)
     {
         
@@ -75,9 +89,9 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
                         
                     }else {
                         
-                        metodosUsuario.mensajeNoSeEncuentraUsuario();
                         frmmu.habilitarAgregar();
                         frmmu.administrarCampos();
+                        metodosUsuario.mensajeNoSeEncuentraUsuario();
                         
                     }
                                       
@@ -86,30 +100,32 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
                 if(e.getActionCommand().equals("Agregar")) {
                     
                     metodosUsuario.agregarUsuario(frmmu.devolverInfoUsuario());
+                    metodosUsuario.mensajeUsuarioAgregado();
                     frmmu.limpiarCampos();
                     frmmu.estadoInicialCampos();
                     frmmu.estadoInicialBotones();
-                    metodosUsuario.mensajeUsuarioAgregado();
+                    
                     
                 }
                 
                 if(e.getActionCommand().equals("Modificar")) {
                     
                     metodosUsuario.modificarUsuario(frmmu.devolverInfoUsuario());
+                    metodosUsuario.mensajeModificado();
                     frmmu.limpiarCampos();
                     frmmu.estadoInicialCampos();
                     frmmu.estadoInicialBotones();
-                    metodosUsuario.mensajeModificado();
+                    
                     
                 }
                 
                 if(e.getActionCommand().equals("Eliminar")) {
                     
                     metodosUsuario.eliminarUsuario(frmmu.devolverIdUsuario());
+                    metodosUsuario.mensajeUsuarioEliminado();
                     frmmu.limpiarCampos();
                     frmmu.estadoInicialCampos();
                     frmmu.estadoInicialBotones();
-                    metodosUsuario.mensajeUsuarioEliminado();
                     
                 }
                  
