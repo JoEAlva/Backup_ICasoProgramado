@@ -39,6 +39,7 @@ public class Manejador_Ventanas {
         frmsi.setVisible(true);
         frmmp.setVisible(false);
         
+        
     }
     
     /*
@@ -47,8 +48,16 @@ public class Manejador_Ventanas {
     */
     public void mostrarFRM_MenuPrincipal() {
         
-        
         frmmp.setVisible(true);
+        
+    }
+    
+    /*
+    
+    */
+    public void mostrarFRM_LoginUsuario() {
+        
+        frmlu.setVisible(true);
         
     }
     

@@ -26,16 +26,14 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
     FRM_MantenimientoUsuarios frmmu;
     FRM_LoginUsuario fRM_LoginUsuario;
     public MetodosUsuario metodosUsuario;
-    ArchivosUsuario archivosUsuario;
+    public ArchivosUsuario archivosUsuario;
     MetodosConexionBD1 conexionBD1;
     XML_Usuarios xML_Usuarios;
     
         
     // Contructor de la clase
-    public Controlador_FRM_MantenimientoUsuarios(FRM_MantenimientoUsuarios frmmu, String sistemaInfo, MetodosConexionBD1 conexionBD1, FRM_LoginUsuario fRM_LoginUsuario) {
-        
-        this.fRM_LoginUsuario = fRM_LoginUsuario;
-        
+    public Controlador_FRM_MantenimientoUsuarios(FRM_MantenimientoUsuarios frmmu, String sistemaInfo, MetodosConexionBD1 conexionBD1) {
+               
         //Se iguala sistemaInfo al valos sistemaInfo que entra por parámetro
         this.sistemaInfo = sistemaInfo;
         //Hace referencia a FRM_MantenimientoUsuarios
@@ -49,14 +47,11 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
         if(archivosUsuario.cargarArchivoUsuario())
         {
              System.out.println("Se cargó el archivo usuario correctamente(controlador)");
-             this.fRM_LoginUsuario.setVisible(true);
         }
         else
         {
             //Si no existe archivo creado con
              System.out.println("Error al cargar el archivo usuario(controlador)");
-             metodosUsuario.mensajeRegistrarUsuario();
-             frmmu.setVisible(true);
         }
 
         //Iguala arrayUsuario a los valores retornados 

@@ -67,8 +67,11 @@ public class ArchivosUsuario {
         ArrayList<Usuario> arrayUsuario = new ArrayList<Usuario>();
         try
         {
-            arrayUsuario.add((Usuario)entrada.readObject());
-            System.out.println("Se leyó el archivo usuario correctamente ");
+            while(true) {
+                arrayUsuario.add((Usuario)entrada.readObject());
+                System.out.println("Se leyó el archivo usuario correctamente ");
+            }
+            
             
         }
         catch(Exception e)

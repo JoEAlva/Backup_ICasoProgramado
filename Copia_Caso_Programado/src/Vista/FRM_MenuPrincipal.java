@@ -22,7 +22,7 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
     //Referencias
     Controlador_FRM_MenuPrincipal controlador_FRM_MenuPrincipal;
     Manejador_Ventanas manejador_Clases;
-    FRM_SistemaInformacion frmsi;
+    FRM_SistemaInformacion fRM_SistemaInformacion;
     FRM_LoginUsuario fRM_LoginUsuario;
     
     //Constructor de la clase
@@ -30,21 +30,22 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
         
         initComponents();
         this.setLocation(100, 100);
-        frmsi = new FRM_SistemaInformacion(this);
-        manejador_Clases = new Manejador_Ventanas(this, frmsi);
-        controlador_FRM_MenuPrincipal = new Controlador_FRM_MenuPrincipal(manejador_Clases);
-              
+        fRM_SistemaInformacion = new FRM_SistemaInformacion(this);
+        
+        
+        manejador_Clases = new Manejador_Ventanas(this, fRM_SistemaInformacion);
+                
+        controlador_FRM_MenuPrincipal = new Controlador_FRM_MenuPrincipal(manejador_Clases, this);
+        
                
         agregarEventos();
         
     }//Fin del constructor 
     
-    /*
-    Método pasa por parámetro el valor asginado de la clase FRM_SistemaInformacion
-    */
+    
     public void seleccionarFuenteDeInformacion()
     {
-        controlador_FRM_MenuPrincipal.setFuenteDeInformacion(frmsi.getSistemaInformacion());
+        controlador_FRM_MenuPrincipal.setFuenteDeInformacion(fRM_SistemaInformacion.getSistemaInformacion());
     }
     
     /*

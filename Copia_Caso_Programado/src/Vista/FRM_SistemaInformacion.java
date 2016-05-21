@@ -124,6 +124,7 @@ public class FRM_SistemaInformacion extends javax.swing.JFrame {
         setVisible(false);//Oculta FRM_SistemaInformacion al ser pulsado el botón "Aceptar"                     
 //        frmmp.setVisible(true);//Muestra FRM_MenuPrincipal al ser pulsado el botón "Aceptar"
         frmmp.seleccionarFuenteDeInformacion();//Método que 
+        frmmp.controlador_FRM_MenuPrincipal.decisionVentana();
                                             
     }//GEN-LAST:event_jB_AceptarActionPerformed
 

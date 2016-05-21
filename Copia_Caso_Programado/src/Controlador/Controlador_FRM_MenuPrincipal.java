@@ -7,6 +7,7 @@ package Controlador;
 
 import Modelo.Manejador_Ventanas;
 import Modelo.MetodosConexionBD1;
+import Vista.FRM_MenuPrincipal;
 import Vista.FRM_SistemaInformacion;
 import Vista.FRM_MantenimientoEstudiantes;
 import Vista.FRM_MantenimientoCursos;
@@ -26,6 +27,7 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener{
     String sistemaInformacion = "";
     
     //Referencias
+    FRM_MenuPrincipal fRM_MenuPrincipal;
     Manejador_Ventanas manejador_Clases;
     MetodosConexionBD1 conexionBD1;
     FRM_SistemaInformacion fRM_SistemaInformacion;
@@ -36,16 +38,18 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener{
     FRM_MantenimientoUsuarios fRM_MantenimientoUsuarios; 
     
     
-    public Controlador_FRM_MenuPrincipal(Manejador_Ventanas manejador_Clases)
+    public Controlador_FRM_MenuPrincipal(Manejador_Ventanas manejador_Clases, FRM_MenuPrincipal fRM_MenuPrincipal)
     {
+        //Se iguala la referencia fRM_MenuPrincipal con lo que entra por parámetros
+        this.fRM_MenuPrincipal = fRM_MenuPrincipal;
+        //Se iguala la referencia manejador_Clases con lo que entra por parámetros
         this.manejador_Clases = manejador_Clases;
-        
-        //Se instancia la conexion a la base de datos
+        //Se iguala la referencia conexionBD1 con lo que entra por parámetros
         conexionBD1 = new MetodosConexionBD1();
-        
         
         this.manejador_Clases.mostrarFRM_SistemaInformacion();
         
+
     }
     
     /*
@@ -56,16 +60,40 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener{
     {
         
         this.sistemaInformacion=sistemaInformacion;
-        fRM_MantenimientoEstudiantes=new FRM_MantenimientoEstudiantes(this.sistemaInformacion, conexionBD1);
-        fRM_MantenimientoCursos=new FRM_MantenimientoCursos(this.sistemaInformacion, this.conexionBD1);
-        fRM_MantenimientoUsuarios = new FRM_MantenimientoUsuarios(this.sistemaInformacion, conexionBD1, fRM_LoginUsuario);
-        fRM_LoginUsuario = new FRM_LoginUsuario(this.sistemaInformacion, this.conexionBD1, fRM_MantenimientoUsuarios, this.manejador_Clases);
-//        fRM_LoginUsuario = new FRM_LoginUsuario(this.sistemaInformacion, this.conexionBD1);
-        fRM_Matricula= new FRM_Matricula(fRM_MantenimientoEstudiantes,fRM_MantenimientoCursos, conexionBD1, this.sistemaInformacion);
         
-        
+        fRM_MantenimientoEstudiantes = new FRM_MantenimientoEstudiantes(this.sistemaInformacion, conexionBD1);
+        fRM_MantenimientoCursos = new FRM_MantenimientoCursos(this.sistemaInformacion, this.conexionBD1);
+        fRM_MantenimientoUsuarios = new FRM_MantenimientoUsuarios(this.sistemaInformacion, conexionBD1);
+        fRM_Matricula = new FRM_Matricula(fRM_MantenimientoEstudiantes,fRM_MantenimientoCursos, conexionBD1, this.sistemaInformacion);
+        fRM_LoginUsuario = new FRM_LoginUsuario(this.sistemaInformacion, conexionBD1);
     }
     
+    public void decisionVentana()
+    {
+        if(this.sistemaInformacion.equals("ArchivosPlanos"))
+        {
+            if(fRM_MantenimientoUsuarios.controlador_FRM_MantenimientoUsuarios.archivosUsuario.cargarArchivoUsuario())
+            {
+                
+                fRM_LoginUsuario.setVisible(true);
+                
+            }
+            else
+            {
+                System.out.println("Registro usuario");
+                fRM_MenuPrincipal.setVisible(true);
+//                fRM_MantenimientoUsuarios.setVisible(true);
+            }
+        }
+        if(this.sistemaInformacion.equals("XML"))
+        {
+        
+        }
+        if(this.sistemaInformacion.equals("Bases_de_Datos"))
+        {
+        
+        }
+    }
     public void actionPerformed(ActionEvent e)
     {
         if(e.getActionCommand().equals("Salir"))

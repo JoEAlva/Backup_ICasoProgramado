@@ -9,6 +9,7 @@ import Vista.FRM_MantenimientoUsuarios;
 import Modelo.MetodosConexionBD1;
 import Modelo.MetodosUsuario;
 import Modelo.Manejador_Ventanas;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,21 +33,18 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
     /**
      * Constructor de la clase
      */
-    public FRM_LoginUsuario(String sistemaInfo, MetodosConexionBD1 metodosConexionBD1, FRM_MantenimientoUsuarios fRM_MantenimientoUsuarios, Manejador_Ventanas manejador_Ventanas) {
+    public FRM_LoginUsuario(String sistemaInformacion, MetodosConexionBD1 metodosConexionBD1) {
         
         initComponents();
         setLocation(450, 200);
-        this.manejador_Ventanas = manejador_Ventanas;
-        this.fRM_MantenimientoUsuarios = fRM_MantenimientoUsuarios;
+        this.fRM_MenuPrincipal = this.fRM_MenuPrincipal;
         this.metodosConexionBD1 = metodosConexionBD1;
-        this.sistemaInformacion = sistemaInfo;
+        this.sistemaInformacion = sistemaInformacion;
         
-        controlador_FRM_LoginUsuario = new Controlador_FRM_LoginUsuario(this, this.sistemaInformacion, this.metodosConexionBD1, this.metodosUsuario, this.fRM_MantenimientoUsuarios, this.manejador_Ventanas);
+        controlador_FRM_LoginUsuario = new Controlador_FRM_LoginUsuario(this, this.sistemaInformacion, this.metodosConexionBD1);
         agregarEventoBtn();
         
     }
-    
-    
     
     /*
     Agrega las funciones al botón
@@ -55,21 +53,29 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
         this.jB_Entrar.addActionListener(controlador_FRM_LoginUsuario);
     }
     
+    
     /*
     Método que extrae los datos de los campos
     */
-    public String[] getInfoLogin() {
-        
-        String arrayInfo[] = new String[2];
+    public String getInfoPass() {
         
         char[] arrayC = this.jP_Contrasena.getPassword();
         String pass = new String(arrayC);
         
-        arrayInfo[0] = this.jT_Usuario.getText();
-        arrayInfo[1] = pass;
+        return pass;
         
-        return arrayInfo;
+    }
+    
+    public String getUsuario() {
         
+        String user = this.jT_Usuario.getText();
+        return user;
+        
+    }
+    
+    public void limpiarCampos() {
+        this.jT_Usuario.setText("");
+        this.jP_Contrasena.setText("");
     }
     
 
