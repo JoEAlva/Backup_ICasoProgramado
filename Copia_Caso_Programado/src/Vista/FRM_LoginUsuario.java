@@ -173,6 +173,11 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
                     this.setVisible(false);
                     this.manejador_Ventanas.mostrarFRM_MenuPrincipal();
                 }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "El usuario o la contraseña son incorrectas", "Universidad de Costa Rica", JOptionPane.INFORMATION_MESSAGE);
+                    limpiarCampos();
+                }
                 
                 break;
                 

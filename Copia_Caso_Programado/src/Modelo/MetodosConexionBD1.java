@@ -22,6 +22,8 @@ public class MetodosConexionBD1 {
     public String infoCurso[];
     public String infoUsuario[];
     public String infoLogin[];
+    public String infoEstMatricula[];
+    public String infoCursoMatricula[];
     public String nombreCurso;
     public String nombreEst;
     public int numeroFila = 0;
@@ -38,6 +40,8 @@ public class MetodosConexionBD1 {
         infoCurso = new String[3];
         infoUsuario = new String[5];
         infoLogin = new String[2];
+        infoEstMatricula = new String[2];
+        infoCursoMatricula = new String[2];
         
     }//Fin constructor
     
@@ -497,7 +501,7 @@ public class MetodosConexionBD1 {
                     info[3] = rs.getString("contrasena");
                     info[4] = rs.getString("tipo");
                     //int edad = rs.getInt(2);
-                    this.infoEst = info;
+                    this.infoUsuario = info;
                     existe = true;
                     
                 }

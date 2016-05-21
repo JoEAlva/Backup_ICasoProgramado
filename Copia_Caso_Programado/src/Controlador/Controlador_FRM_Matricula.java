@@ -97,9 +97,15 @@ public class Controlador_FRM_Matricula implements ActionListener{
             //En el caso que fuera Bases de Datos
             case "Bases_de_Datos":
                 
-                if(e.getActionCommand().equals("Consultar")) {
+                if(e.getActionCommand().equals("ConsultaRapidaEstudiante")) {
                     
-                    System.out.println("Bases_de_Datos");
+                    
+                    
+                }
+                
+                if(e.getActionCommand().equals("ConsultaRapidaCurso")) {
+                    
+                    
                     
                 }
                 
