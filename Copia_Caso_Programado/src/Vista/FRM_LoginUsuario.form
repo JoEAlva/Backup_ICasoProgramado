@@ -72,6 +72,9 @@
         <Property name="text" type="java.lang.String" value="Entrar al Sistema"/>
         <Property name="actionCommand" type="java.lang.String" value="Entrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jB_EntrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jL_Usuario">
       <Properties>

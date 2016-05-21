@@ -28,7 +28,6 @@ public class Controlador_FRM_LoginUsuario implements ActionListener{
     
     //Referencias
     FRM_LoginUsuario fRM_LoginUsuario;
-    FRM_MenuPrincipal fRM_MenuPrincipal;
     ArchivosUsuario archivosUsuario;
     MetodosUsuario metodosUsuario;
     FRM_MantenimientoUsuarios fRM_MantenimientoUsuarios;
@@ -44,8 +43,7 @@ public class Controlador_FRM_LoginUsuario implements ActionListener{
         this.metodosConexionBD1 = metodosConexionBD1;
         this.sistemaInfo = sistemaInfo;
         this.fRM_LoginUsuario = fRM_LoginUsuario;
-        archivosUsuario = new ArchivosUsuario();
-        metodosUsuario = new MetodosUsuario(archivosUsuario);
+
         
     }//Fin del constructor de la clase
     
@@ -56,25 +54,8 @@ public class Controlador_FRM_LoginUsuario implements ActionListener{
             
             //En caso que fuera "ArchivosPlanos"
             case "ArchivosPlanos":
-                
-                boolean existe = metodosUsuario.returnExiste();
-                metodosUsuario.imprimirUnaMierda();
-                metodosUsuario.verificarUsuario(fRM_LoginUsuario.getUsuario(), fRM_LoginUsuario.getInfoPass());
-                if(existe){
-                   
-                    this.fRM_LoginUsuario.setVisible(false);
-                    fRM_MenuPrincipal.setVisible(true);
-                    System.out.println("Funciona y debe mostrar la ventana principal");
                     
-                }else{
-                    
-                    System.out.println("Es incorrecto, verifica su contraseña o usuario ");
-                    fRM_LoginUsuario.limpiarCampos();
-                    System.out.println(" "+fRM_LoginUsuario.getUsuario());
-                    System.out.println(" "+fRM_LoginUsuario.getInfoPass());
-                    
-                }
-                    
+
                 
                 break;
                 
@@ -88,7 +69,7 @@ public class Controlador_FRM_LoginUsuario implements ActionListener{
             //En caso que fuera Bases_de_Datos
             case "Bases_de_Datos":
 
-                System.out.println("Bases_de_Datos");
+                
                 
                 break;
                 

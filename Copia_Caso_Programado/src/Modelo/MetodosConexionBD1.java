@@ -21,6 +21,7 @@ public class MetodosConexionBD1 {
     public String infoEst[];
     public String infoCurso[];
     public String infoUsuario[];
+    public String infoLogin[];
     public String nombreCurso;
     public String nombreEst;
     public int numeroFila = 0;
@@ -36,6 +37,7 @@ public class MetodosConexionBD1 {
         infoEst = new String[2];
         infoCurso = new String[3];
         infoUsuario = new String[5];
+        infoLogin = new String[2];
         
     }//Fin constructor
     
@@ -364,6 +366,39 @@ public class MetodosConexionBD1 {
         
     }//Fin devolverNombreEst
     
+    public boolean metodoLogin(String usuario, String contrasena, String idUsuario) {
+        
+        boolean existe = false;
+        ResultSet rs = null;
+        Statement cmd = null;
+        String info[] = new String[2];
+
+        try {
+                cmd = con.createStatement();
+                rs = cmd.executeQuery("SELECT nombreUsuario, contrasena FROM usuarios WHERE cedula = '"+idUsuario+"'");
+                
+                while (rs.next()) 
+                {
+                    info[0] = ""+idUsuario;
+                    info[1] = rs.getString("nombreUsuario");
+                    info[2] = rs.getString("contrasena");
+                    
+                    //int edad = rs.getInt(2);
+                    this.infoUsuario = info;
+                    existe = true;
+                    
+                }
+                
+                rs.close();
+                
+        }
+        catch(Exception e)
+        {
+            System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
+        }
+        return existe;
+    }
+    
     /*
     Registra un estudiante en la base de datos
     */
@@ -446,7 +481,7 @@ public class MetodosConexionBD1 {
 
         try {
                 cmd = con.createStatement();
-                rs = cmd.executeQuery("SELECT nombre, direccion FROM estudiantes WHERE cedula = '"+idUsuario+"'");
+                rs = cmd.executeQuery("SELECT nombreCompleto, nombreUsuario, contrasena, tipo FROM usuarios WHERE idUsuario = '"+idUsuario+"'");
                 
                 while (rs.next()) 
                 {

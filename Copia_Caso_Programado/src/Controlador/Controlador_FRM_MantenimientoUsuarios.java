@@ -95,7 +95,6 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
                 if(e.getActionCommand().equals("Agregar")) {
                     
                     metodosUsuario.agregarUsuario(frmmu.devolverInfoUsuario());
-                    metodosUsuario.mensajeUsuarioAgregado();
                     frmmu.limpiarCampos();
                     frmmu.estadoInicialCampos();
                     frmmu.estadoInicialBotones();

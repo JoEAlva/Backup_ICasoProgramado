@@ -184,23 +184,22 @@ public class MetodosUsuario
     /*
     
     */
-    public void verificarUsuario(String nombreUsuario, String contrasena) {
+    public boolean verificarUsuario(String nombreUsuario, String contrasena) {
         
-        for(int contador2 = 0; contador2 < arrayUsuario.size(); contador2++) {
-            System.err.println("¿Es usted capaz de imprimir esto?");
-            this.existe = true;
+        boolean existe = true;
+        
+        for (int i = 0; i < arrayUsuario.size(); i++) {
+            
+            if(arrayUsuario.get(i).getNombreUsuario().equals(nombreUsuario) && arrayUsuario.get(i).getContrasena().equals(contrasena)) {
+                existe = true;
+            }
+            
+            i = arrayUsuario.size();
+            
         }
         
-        
+        return existe;
         
     }//Fin de verificarUsuario
-    
-    public void imprimirUnaMierda() {
-        System.err.println("Imprima una mierda");
-    }
-    
-    public boolean returnExiste() {
-        return existe;
-    }
         
 }//Fin de MetodosUsuario

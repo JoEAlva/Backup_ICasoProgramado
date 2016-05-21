@@ -21,7 +21,6 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
     String sistemaInformacion = "";
     
     //Referencias
-    FRM_MenuPrincipal fRM_MenuPrincipal;
     FRM_MantenimientoUsuarios fRM_MantenimientoUsuarios;
     MetodosConexionBD1 metodosConexionBD1;
     Controlador_FRM_LoginUsuario controlador_FRM_LoginUsuario;
@@ -37,11 +36,10 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
         
         initComponents();
         setLocation(450, 200);
-        this.fRM_MenuPrincipal = this.fRM_MenuPrincipal;
         this.metodosConexionBD1 = metodosConexionBD1;
         this.sistemaInformacion = sistemaInformacion;
         
-        controlador_FRM_LoginUsuario = new Controlador_FRM_LoginUsuario(this, this.sistemaInformacion, this.metodosConexionBD1);
+//        controlador_FRM_LoginUsuario = new Controlador_FRM_LoginUsuario(this, this.sistemaInformacion, this.metodosConexionBD1);
         agregarEventoBtn();
         
     }
@@ -98,6 +96,11 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
 
         jB_Entrar.setText("Entrar al Sistema");
         jB_Entrar.setActionCommand("Entrar");
+        jB_Entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_EntrarActionPerformed(evt);
+            }
+        });
 
         jL_Usuario.setText("Usuario");
 
@@ -141,6 +144,34 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jB_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_EntrarActionPerformed
+        // TODO add your handling code here:
+        switch(this.sistemaInformacion) {
+            
+            //En caso que fuera "ArchivosPlanos"
+            case "ArchivosPlanos":
+                
+                System.err.println("Hola ArchivosPlanos");
+                
+                break;
+                
+            //En caso que fuera archivosXML
+            case "XML":
+
+                System.err.println("Hola XML");
+                
+                break;
+            
+            //En caso que fuera Bases_de_Datos
+            case "Bases_de_Datos":
+
+                System.err.println("Bases_de_Datos");
+                
+                break;
+                
+        }//Fin del switch
+    }//GEN-LAST:event_jB_EntrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jB_Entrar;
