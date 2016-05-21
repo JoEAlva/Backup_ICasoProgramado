@@ -44,15 +44,16 @@ public class MetodosConexionBD1 {
     /*
     Realiza la conexion con la base de datos
     */
-    public void realizarConexion()
+    public boolean realizarConexion()
     {
-        
+        boolean conxR = false;
         try {
             String userName = "root";
             String password = "";
             String url = "jdbc:mysql://localhost:3306/matricula";
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = DriverManager.getConnection(url, userName, password);
+            conxR = true;
             System.out.println("Conexión Realizada");
         } catch (Exception e) {
             System.err.println("Cannot connect to database server");
@@ -60,6 +61,7 @@ public class MetodosConexionBD1 {
             e.printStackTrace();
         } 
         
+        return conxR;
     }//Fin realizarConexion
     
     /*

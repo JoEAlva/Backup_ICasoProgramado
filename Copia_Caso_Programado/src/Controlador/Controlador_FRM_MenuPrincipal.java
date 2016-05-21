@@ -92,17 +92,36 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener{
         
             if(fRM_MantenimientoUsuarios.controlador_FRM_MantenimientoUsuarios.xML_Usuarios.cargarXML())
             {
-                
+                fRM_LoginUsuario.setVisible(true); 
             }
             else
             {
-                fRM_MenuPrincipal.setVisible(true);
+                fRM_MantenimientoUsuarios.setVisible(true);
+                
+                if(fRM_MantenimientoUsuarios.isVisible())
+                {
+                    fRM_MenuPrincipal.setVisible(false);
+
+                }
             }
             
         }
         if(this.sistemaInformacion.equals("Bases_de_Datos"))
         {
-        
+            if(fRM_MantenimientoUsuarios.controlador_FRM_MantenimientoUsuarios.conexionBD1.realizarConexion())
+            {
+                fRM_LoginUsuario.setVisible(true); 
+            }
+            else
+            {
+                fRM_MantenimientoUsuarios.setVisible(true);
+                
+                if(fRM_MantenimientoUsuarios.isVisible())
+                {
+                    fRM_MenuPrincipal.setVisible(false);
+
+                }
+            }
         }
     }
     public void actionPerformed(ActionEvent e)
