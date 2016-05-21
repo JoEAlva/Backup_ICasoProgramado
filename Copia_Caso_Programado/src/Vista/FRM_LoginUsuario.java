@@ -32,10 +32,11 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
     /**
      * Constructor de la clase
      */
-    public FRM_LoginUsuario(String sistemaInformacion, MetodosConexionBD1 metodosConexionBD1) {
+    public FRM_LoginUsuario(String sistemaInformacion, MetodosConexionBD1 metodosConexionBD1, Manejador_Ventanas manejador_Ventanas) {
         
         initComponents();
         setLocation(450, 200);
+        this.manejador_Ventanas = manejador_Ventanas;
         this.metodosConexionBD1 = metodosConexionBD1;
         this.sistemaInformacion = sistemaInformacion;
         
@@ -166,7 +167,12 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
             //En caso que fuera Bases_de_Datos
             case "Bases_de_Datos":
 
-                System.err.println("Bases_de_Datos");
+                if(metodosConexionBD1.metodoLogin(getUsuario(), getInfoPass()))
+                {
+                    System.out.println("Funciona o no funciona");
+                    this.setVisible(false);
+                    this.manejador_Ventanas.mostrarFRM_MenuPrincipal();
+                }
                 
                 break;
                 

@@ -65,7 +65,7 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener{
         fRM_MantenimientoCursos = new FRM_MantenimientoCursos(this.sistemaInformacion, this.conexionBD1);
         fRM_MantenimientoUsuarios = new FRM_MantenimientoUsuarios(this.sistemaInformacion, conexionBD1);
         fRM_Matricula = new FRM_Matricula(fRM_MantenimientoEstudiantes,fRM_MantenimientoCursos, conexionBD1, this.sistemaInformacion);
-        fRM_LoginUsuario = new FRM_LoginUsuario(this.sistemaInformacion, conexionBD1);
+        fRM_LoginUsuario = new FRM_LoginUsuario(this.sistemaInformacion, conexionBD1, this.manejador_Clases);
     }
     
     public void decisionVentana()

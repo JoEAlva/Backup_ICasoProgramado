@@ -62,6 +62,7 @@ public class MetodosConexionBD1 {
         } 
         
         return conxR;
+        
     }//Fin realizarConexion
     
     /*
@@ -368,7 +369,7 @@ public class MetodosConexionBD1 {
         
     }//Fin devolverNombreEst
     
-    public boolean metodoLogin(String usuario, String contrasena, String idUsuario) {
+    public boolean metodoLogin(String usuario, String contrasena) {
         
         boolean existe = false;
         ResultSet rs = null;
@@ -377,16 +378,15 @@ public class MetodosConexionBD1 {
 
         try {
                 cmd = con.createStatement();
-                rs = cmd.executeQuery("SELECT nombreUsuario, contrasena FROM usuarios WHERE cedula = '"+idUsuario+"'");
+                rs = cmd.executeQuery("SELECT nombreUsuario, contrasena FROM usuarios WHERE nombreUsuario = '"+usuario+"'");
                 
                 while (rs.next()) 
                 {
-                    info[0] = ""+idUsuario;
-                    info[1] = rs.getString("nombreUsuario");
-                    info[2] = rs.getString("contrasena");
+                    info[0] = rs.getString("nombreUsuario");
+                    info[1] = rs.getString("contrasena");
                     
                     //int edad = rs.getInt(2);
-                    this.infoUsuario = info;
+                    this.infoLogin = info;
                     existe = true;
                     
                 }
@@ -399,6 +399,10 @@ public class MetodosConexionBD1 {
             System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
         }
         return existe;
+    }
+    
+    public String[] devolverArregloLogin() {
+        return this.infoLogin;
     }
     
     /*
