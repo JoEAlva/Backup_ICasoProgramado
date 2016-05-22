@@ -35,8 +35,8 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
         controlador_FRM_MantenimientoUsuarios = new Controlador_FRM_MantenimientoUsuarios(this, this.sistemaInfo, this.conexionBD1);
         this.gUI_Botones1.agregarEventos(controlador_FRM_MantenimientoUsuarios);            
         this.gUI_Botones1.estadoInicialBotones();
-        this.gUI_InformacionUsuario2.estadoInicialCampos();
-        
+        this.gUI_InformacionUsuario1.estadoInicialCampos();
+        this.gUI_InformacionUsuario1.agregarEventoConsultaRapida(controlador_FRM_MantenimientoUsuarios);
     }
     
     /*
@@ -44,11 +44,11 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
     */
     public String[] devolverInfoUsuario()
     {
-        return this.gUI_InformacionUsuario2.devolverInfoUsuario();
+        return this.gUI_InformacionUsuario1.devolverInfoUsuario();
     }
     
     public String devolverIdUsuario() {
-        return this.gUI_InformacionUsuario2.devolverIdUsuario();
+        return this.gUI_InformacionUsuario1.devolverIdUsuario();
     }
     
     
@@ -57,14 +57,14 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
     
     */
     public void estadoInicialCampos() {
-        this.gUI_InformacionUsuario2.estadoInicialCampos();
+        this.gUI_InformacionUsuario1.estadoInicialCampos();
     }
     
     /*
     
     */
     public void administrarCampos() {
-        this.gUI_InformacionUsuario2.administrarCampos();
+        this.gUI_InformacionUsuario1.administrarCampos();
     }
     
     /*
@@ -72,7 +72,7 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
     */
     public void mostrarInfoPantalla(String arregloUsuario[])
     {
-        this.gUI_InformacionUsuario2.mostrarInfoPantalla(arregloUsuario);
+        this.gUI_InformacionUsuario1.mostrarInfoPantalla(arregloUsuario);
     }
     
     /*
@@ -87,7 +87,7 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
     */
     public void limpiarCampos()
     {
-        this.gUI_InformacionUsuario2.limpiarCampos();
+        this.gUI_InformacionUsuario1.limpiarCampos();
     }
     
     public void habilitarBotones() {
@@ -112,34 +112,31 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
     private void initComponents() {
 
         gUI_Botones1 = new Vista.GUI_Botones2();
-        gUI_InformacionUsuario2 = new Vista.GUI_InformacionUsuario();
+        gUI_InformacionUsuario1 = new Vista.GUI_InformacionUsuario();
+        jLabel1 = new javax.swing.JLabel();
 
+        setMinimumSize(new java.awt.Dimension(450, 350));
+        setPreferredSize(new java.awt.Dimension(450, 350));
+        setResizable(false);
+        setSize(new java.awt.Dimension(450, 350));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
                 formComponentHidden(evt);
             }
         });
+        getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(gUI_Botones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(gUI_InformacionUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(gUI_InformacionUsuario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gUI_Botones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        gUI_Botones1.setOpaque(false);
+        getContentPane().add(gUI_Botones1);
+        gUI_Botones1.setBounds(10, 190, 294, 73);
+
+        gUI_InformacionUsuario1.setOpaque(false);
+        getContentPane().add(gUI_InformacionUsuario1);
+        gUI_InformacionUsuario1.setBounds(0, 0, 449, 176);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondoUsuario.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 450, 350);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -156,6 +153,7 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Vista.GUI_Botones2 gUI_Botones1;
-    private Vista.GUI_InformacionUsuario gUI_InformacionUsuario2;
+    private Vista.GUI_InformacionUsuario gUI_InformacionUsuario1;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

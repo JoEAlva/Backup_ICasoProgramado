@@ -238,4 +238,19 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
         
     }//Fin del método actionPerformed
     
+    public void consultaRapida() {
+        if(metodosUsuario.consultarUsuario(frmmu.devolverInfoUsuario())) {
+            
+            frmmu.mostrarInfoPantalla(metodosUsuario.devolverArregloUsuario());
+            frmmu.habilitarBotones();
+            frmmu.administrarCampos();
+        }else {
+
+            frmmu.habilitarAgregar();
+            frmmu.administrarCampos();
+            metodosUsuario.mensajeNoSeEncuentraUsuario();
+
+        }
+    }
+    
 }//Fin Controlador_FRM_MantenimientoUsuarios

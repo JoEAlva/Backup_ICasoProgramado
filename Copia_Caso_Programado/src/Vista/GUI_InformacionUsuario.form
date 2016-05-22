@@ -19,27 +19,34 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="jL_TipoUsuario" max="32767" attributes="0"/>
-                      <Component id="jL_NombreCompleto" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jL_Usuario" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jC_TipoUsuario" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jT_NombreUsuario" min="-2" pref="80" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jL_TipoUsuario" max="32767" attributes="0"/>
+                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jT_NombreUsuario" pref="80" max="32767" attributes="0"/>
+                          <Component id="jC_TipoUsuario" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jL_Contrasena" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jT_Contrasena" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jT_NombreCompleto" min="-2" pref="261" max="-2" attributes="0"/>
-                  <Component id="jT_IdUsuario" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jL_Usuario" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jL_NombreCompleto" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jT_IdUsuario" min="-2" pref="140" max="-2" attributes="0"/>
+                          <Component id="jT_NombreCompleto" min="-2" pref="243" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,16 +66,16 @@
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jL_Contrasena" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jT_Contrasena" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jT_NombreUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jT_Contrasena" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jL_TipoUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jC_TipoUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="60" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,14 +83,14 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jL_NombreCompleto">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre completo"/>
+        <Property name="text" type="java.lang.String" value="Nombre"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jT_NombreCompleto">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre usuario"/>
+        <Property name="text" type="java.lang.String" value="Usuario"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jT_NombreUsuario">
@@ -121,6 +128,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jT_IdUsuario">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jT_IdUsuarioKeyPressed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -30,7 +30,7 @@ public class FRM_MantenimientoCursos extends javax.swing.JFrame {
         this.sistemaInfo = sistemaInfo;
         controlador = new Controlador_FRM_MantenimientoCursos(this, this.sistemaInfo, this.conexionBD1);
         this.gUI_Botones1.agregarEventos(controlador);
-        this.gUI_InformacionCursos1.agregarFuncionConsultaRapida(controlador);
+        this.gUI_InformacionCursos2.agregarFuncionConsultaRapida(controlador);
         estadoInicialBotones();
         estadoInicialCampos();
         
@@ -38,22 +38,22 @@ public class FRM_MantenimientoCursos extends javax.swing.JFrame {
     
     
     public String[] devolverInformacion(){
-        return this.gUI_InformacionCursos1.devolverInformacion();
+        return this.gUI_InformacionCursos2.devolverInformacion();
     }
     public String devolverSigla(){
-        return this.gUI_InformacionCursos1.devolverSigla();
+        return this.gUI_InformacionCursos2.devolverSigla();
     }
     public void mostrarInformacion(String arreglo[]){
-        this.gUI_InformacionCursos1.mostrarInformacion(arreglo);
+        this.gUI_InformacionCursos2.mostrarInformacion(arreglo);
     }
     public void mostrarMensaje(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje);
     }
     public void limpiarCampos() {
-        this.gUI_InformacionCursos1.limpiarCampos();
+        this.gUI_InformacionCursos2.limpiarCampos();
     }
     public void habilitarCampos() {
-        this.gUI_InformacionCursos1.habilitarCampos();
+        this.gUI_InformacionCursos2.habilitarCampos();
     }
     public void habilitarAgregar() {
         this.gUI_Botones1.habilitarAgregar();
@@ -62,7 +62,7 @@ public class FRM_MantenimientoCursos extends javax.swing.JFrame {
         this.gUI_Botones1.estadoInicialBotones();
     }
     public void estadoInicialCampos() {
-        this.gUI_InformacionCursos1.estadoInicialCampos();
+        this.gUI_InformacionCursos2.estadoInicialCampos();
     }
     public void habilitarBotones() {
         this.gUI_Botones1.habilitarBotones();
@@ -75,36 +75,33 @@ public class FRM_MantenimientoCursos extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        gUI_InformacionCursos1 = new Vista.GUI_InformacionCursos();
         gUI_Botones1 = new Vista.GUI_Botones2();
+        gUI_InformacionCursos2 = new Vista.GUI_InformacionCursos();
+        jLabel1 = new javax.swing.JLabel();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
                 formComponentHidden(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gUI_InformacionCursos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gUI_Botones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(gUI_InformacionCursos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(gUI_Botones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
-        );
+        gUI_Botones1.setOpaque(false);
+        getContentPane().add(gUI_Botones1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
+
+        gUI_InformacionCursos2.setOpaque(false);
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, gUI_InformacionCursos2, org.jdesktop.beansbinding.ELProperty.create("${background}"), gUI_InformacionCursos2, org.jdesktop.beansbinding.BeanProperty.create("background"));
+        bindingGroup.addBinding(binding);
+
+        getContentPane().add(gUI_InformacionCursos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondoLogin.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -120,6 +117,8 @@ public class FRM_MantenimientoCursos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private Vista.GUI_Botones2 gUI_Botones1;
-    private Vista.GUI_InformacionCursos gUI_InformacionCursos1;
+    private Vista.GUI_InformacionCursos gUI_InformacionCursos2;
+    private javax.swing.JLabel jLabel1;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

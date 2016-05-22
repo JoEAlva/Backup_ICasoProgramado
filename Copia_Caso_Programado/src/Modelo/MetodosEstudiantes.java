@@ -41,7 +41,6 @@ public class MetodosEstudiantes {
     {
         Estudiante temporal=new Estudiante(informacion[0], informacion[1], informacion[2]);
         arrayEstudiantes.add(temporal);
-        mensajeEstudianteAgregado();
         
     }
     

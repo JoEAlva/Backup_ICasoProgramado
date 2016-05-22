@@ -8,6 +8,7 @@ import Controlador.Controlador_FRM_LoginUsuario;
 import Vista.FRM_MantenimientoUsuarios;
 import Modelo.MetodosConexionBD1;
 import Modelo.MetodosUsuario;
+import Modelo.ArchivosUsuario;
 import Modelo.XML_Usuarios;
 import Modelo.Manejador_Ventanas;
 import javax.swing.JOptionPane;
@@ -25,6 +26,7 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
     FRM_MantenimientoUsuarios fRM_MantenimientoUsuarios;
     MetodosConexionBD1 metodosConexionBD1;
     Controlador_FRM_LoginUsuario controlador_FRM_LoginUsuario;
+    ArchivosUsuario archivosUsuario;
     MetodosUsuario metodosUsuario;
     XML_Usuarios xML_Usuarios;
     Manejador_Ventanas manejador_Ventanas;
@@ -40,10 +42,24 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
         setLocation(450, 200);
         this.fRM_MantenimientoUsuarios = fRM_MantenimientoUsuarios;
         xML_Usuarios = new XML_Usuarios(fRM_MantenimientoUsuarios);
-        this.metodosUsuario = metodosUsuario;
+        archivosUsuario = new ArchivosUsuario();
+        this.metodosUsuario = new MetodosUsuario(archivosUsuario);
         this.manejador_Ventanas = manejador_Ventanas;
         this.metodosConexionBD1 = metodosConexionBD1;
         this.sistemaInformacion = sistemaInformacion;
+        
+        if(archivosUsuario.cargarArchivoUsuario())
+        {
+             System.out.println("Se cargó el archivo usuario correctamente(controlador)");
+        }
+        else
+        {
+            //Si no existe archivo creado con
+             System.out.println("Error al cargar el archivo usuario(controlador)");
+        }
+
+        //Iguala arrayUsuario a los valores retornados 
+        metodosUsuario.arrayUsuario = archivosUsuario.leerArchivoUsuario();
         
 //        controlador_FRM_LoginUsuario = new Controlador_FRM_LoginUsuario(this, this.sistemaInformacion, this.metodosConexionBD1);
         agregarEventoBtn();
@@ -136,8 +152,14 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
             
             //En caso que fuera "ArchivosPlanos"
             case "ArchivosPlanos":
-                
-                
+                this.manejador_Ventanas.mostrarFRM_MenuPrincipal();
+//                if(metodosUsuario.verificarUsuario(getUsuario(), getInfoPass())) {
+//                    this.setVisible(false);
+//                    this.manejador_Ventanas.mostrarFRM_MenuPrincipal();
+//                }else {
+//                    JOptionPane.showMessageDialog(null, "El usuario o la contraseña son incorrectas", "Universidad de Costa Rica", JOptionPane.INFORMATION_MESSAGE);
+//                    limpiarCampos();
+//                }
 
                 break;
                 

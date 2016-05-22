@@ -17,6 +17,7 @@ public class MetodosUsuario
     //Se declaran los campos de la clase
     public ArrayList<Usuario> arrayUsuario;
     public String arregloUsuario[];
+    public String arregloLogin[];
     public ArchivosUsuario archivosUsuario;
     
     public boolean existe = false;
@@ -31,6 +32,7 @@ public class MetodosUsuario
     {
         arrayUsuario = new ArrayList<Usuario>();
         arregloUsuario = new String[5];
+        arregloLogin = new String[2];
         this.archivosUsuario = archivosUsuario;
     }//Fin del constructor
     
@@ -186,20 +188,25 @@ public class MetodosUsuario
     */
     public boolean verificarUsuario(String nombreUsuario, String contrasena) {
         
-        boolean existe = true;
-        
-        for (int i = 0; i < arrayUsuario.size(); i++) {
-            
-            if(arrayUsuario.get(i).getNombreUsuario().equals(nombreUsuario) && arrayUsuario.get(i).getContrasena().equals(contrasena)) {
+        boolean existe = false;
+        for(int j=0; j<arrayUsuario.size(); j++)
+        {
+            if(arrayUsuario.get(j).getNombreUsuario().equals(nombreUsuario))
+            {
+               
+                arregloLogin[0] = arrayUsuario.get(j).getNombreUsuario();
+                arregloLogin[1] = arrayUsuario.get(j).getContrasena();
+                
                 existe = true;
+                j=arrayUsuario.size();
             }
-            
-            i = arrayUsuario.size();
-            
         }
-        
         return existe;
         
     }//Fin de verificarUsuario
+    
+    public String[] getArregloLogin() {
+        return this.arregloLogin;
+    }
         
 }//Fin de MetodosUsuario

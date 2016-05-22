@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Vista;
+import Controlador.Controlador_FRM_MantenimientoUsuarios;
 /**
  *
  * @author JorgeIgnacioElizondoAlvarado
@@ -11,11 +12,12 @@ package Vista;
 public class GUI_InformacionUsuario extends javax.swing.JPanel {
 
     //Referencias
-    
+    Controlador_FRM_MantenimientoUsuarios controlador_FRM_MantenimientoUsuarios;
     
     public GUI_InformacionUsuario() {
         initComponents();
         llenarComboBox();
+        
     }
     
     /*
@@ -104,6 +106,10 @@ public class GUI_InformacionUsuario extends javax.swing.JPanel {
         this.jC_TipoUsuario.setEnabled(true);
     }
     
+    public void agregarEventoConsultaRapida(Controlador_FRM_MantenimientoUsuarios controlador_FRM_MantenimientoUsuarios) {
+        this.controlador_FRM_MantenimientoUsuarios = controlador_FRM_MantenimientoUsuarios;
+    }
+    
     /*
     Método que comprueba si todos los campos se encuentran llenos
     */
@@ -128,9 +134,9 @@ public class GUI_InformacionUsuario extends javax.swing.JPanel {
         jL_Usuario = new javax.swing.JLabel();
         jT_IdUsuario = new javax.swing.JTextField();
 
-        jL_NombreCompleto.setText("Nombre completo");
+        jL_NombreCompleto.setText("Nombre");
 
-        jLabel1.setText("Nombre usuario");
+        jLabel1.setText("Usuario");
 
         jL_Contrasena.setText("Contraseña");
 
@@ -140,6 +146,12 @@ public class GUI_InformacionUsuario extends javax.swing.JPanel {
 
         jL_Usuario.setText("ID_Usuario");
 
+        jT_IdUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jT_IdUsuarioKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,23 +159,27 @@ public class GUI_InformacionUsuario extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jL_TipoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jL_NombreCompleto)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jL_Usuario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jC_TipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jT_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jL_TipoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jT_NombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(jC_TipoUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jL_Contrasena)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jT_Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jT_NombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jT_IdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jL_Usuario)
+                            .addComponent(jL_NombreCompleto))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jT_IdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jT_NombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,16 +195,23 @@ public class GUI_InformacionUsuario extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jL_Contrasena)
-                    .addComponent(jT_Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jT_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jT_Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jL_TipoUsuario)
                     .addComponent(jC_TipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jT_IdUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jT_IdUsuarioKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == 10) {
+            this.controlador_FRM_MantenimientoUsuarios.consultaRapida();
+        }
+    }//GEN-LAST:event_jT_IdUsuarioKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
