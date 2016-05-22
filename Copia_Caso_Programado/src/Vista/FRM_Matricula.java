@@ -52,6 +52,10 @@ public class FRM_Matricula extends javax.swing.JFrame {
         this.jt_Sigla.setText("");
         this.jt_NombreCurso.setText("");
     }
+    public void limpiarEst() {
+        this.jt_Cedula.setText("");
+        this.jt_NombreEstudiante.setText("");
+    }
     public void cargarTabla()
     {
         String arreglo[]=new String[4];
@@ -78,6 +82,18 @@ public class FRM_Matricula extends javax.swing.JFrame {
     {
         this.jt_NombreCurso.setText(nombre);
     }
+    /*
+    En el caso para archivos 
+    */
+    public void mostrarNombEst(String arreglo[])
+    {
+        this.jt_NombreEstudiante.setText(arreglo[1]);
+    }
+    public void mostrarNombCurso(String arreglo[])
+    {
+        this.jt_NombreCurso.setText(arreglo[0]);
+    }
+    ///////////////////////////////////////////////////////////////////////////
     public void mostrarMensaje(String mensaje)
     {
         JOptionPane.showMessageDialog(null, mensaje);
@@ -100,13 +116,24 @@ public class FRM_Matricula extends javax.swing.JFrame {
         modelo.addColumn("Sigla");
         modelo.addColumn("Nombre Curso");
     }
-    public String[] getInformacionTabla(int contador)
+    public String[] getInformacionTablaMatricula(int contador)
     {
-        String arreglo[]=new String[3];
+        String arreglo[] = new String[3];
         
         arreglo[0]=this.jt_CodigoMatricula.getText();
         arreglo[1]=""+this.modelo.getValueAt(contador, 0);
         arreglo[2]=""+this.modelo.getValueAt(contador, 2);
+        
+        return arreglo;
+    }
+    public String[] getInformacionTablaDetalle(int contador){
+        
+        String arreglo[] = new String[4];
+        
+        arreglo[0] = ""+this.modelo.getValueAt(contador, 0);
+        arreglo[1] = ""+this.modelo.getValueAt(contador, 1);
+        arreglo[2] = ""+this.modelo.getValueAt(contador, 2);
+        arreglo[3] = ""+this.modelo.getValueAt(contador, 3);
         
         return arreglo;
     }

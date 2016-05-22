@@ -38,11 +38,10 @@ public class Controlador_FRM_MantenimientoUsuarios implements ActionListener
         this.sistemaInfo = sistemaInfo;
         //Hace referencia a FRM_MantenimientoUsuarios
         this.frmmu=frmmu;
-
-        
-        
+        //Se instancia ArchivosUsuario
         archivosUsuario = new ArchivosUsuario();
-        metodosUsuario  = new MetodosUsuario(archivosUsuario);
+        //Se iguala metodosUsuario al valor que entra por parámtro
+        metodosUsuario = new MetodosUsuario(archivosUsuario);
         
         if(archivosUsuario.cargarArchivoUsuario())
         {

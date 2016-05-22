@@ -8,6 +8,7 @@ import Controlador.Controlador_FRM_LoginUsuario;
 import Vista.FRM_MantenimientoUsuarios;
 import Modelo.MetodosConexionBD1;
 import Modelo.MetodosUsuario;
+import Modelo.XML_Usuarios;
 import Modelo.Manejador_Ventanas;
 import javax.swing.JOptionPane;
 
@@ -25,6 +26,7 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
     MetodosConexionBD1 metodosConexionBD1;
     Controlador_FRM_LoginUsuario controlador_FRM_LoginUsuario;
     MetodosUsuario metodosUsuario;
+    XML_Usuarios xML_Usuarios;
     Manejador_Ventanas manejador_Ventanas;
     
     
@@ -32,10 +34,13 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
     /**
      * Constructor de la clase
      */
-    public FRM_LoginUsuario(String sistemaInformacion, MetodosConexionBD1 metodosConexionBD1, Manejador_Ventanas manejador_Ventanas) {
+    public FRM_LoginUsuario(String sistemaInformacion, MetodosConexionBD1 metodosConexionBD1, Manejador_Ventanas manejador_Ventanas, MetodosUsuario metodosUsuario, FRM_MantenimientoUsuarios fRM_MantenimientoUsuarios) {
         
         initComponents();
         setLocation(450, 200);
+        this.fRM_MantenimientoUsuarios = fRM_MantenimientoUsuarios;
+        xML_Usuarios = new XML_Usuarios(fRM_MantenimientoUsuarios);
+        this.metodosUsuario = metodosUsuario;
         this.manejador_Ventanas = manejador_Ventanas;
         this.metodosConexionBD1 = metodosConexionBD1;
         this.sistemaInformacion = sistemaInformacion;
@@ -92,9 +97,14 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
         jL_Contrasena = new javax.swing.JLabel();
         jT_Usuario = new javax.swing.JTextField();
         jP_Contrasena = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jB_Entrar.setBackground(new java.awt.Color(0, 192, 243));
+        jB_Entrar.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jB_Entrar.setText("Entrar al Sistema");
         jB_Entrar.setActionCommand("Entrar");
         jB_Entrar.addActionListener(new java.awt.event.ActionListener() {
@@ -102,46 +112,20 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
                 jB_EntrarActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_Entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 162, 178, -1));
 
+        jL_Usuario.setFont(new java.awt.Font("Impact", 2, 12)); // NOI18N
         jL_Usuario.setText("Usuario");
+        getContentPane().add(jL_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 82, 40, -1));
 
+        jL_Contrasena.setFont(new java.awt.Font("Impact", 2, 12)); // NOI18N
         jL_Contrasena.setText("Contraseña");
+        getContentPane().add(jL_Contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 128, 60, -1));
+        getContentPane().add(jT_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 76, 87, -1));
+        getContentPane().add(jP_Contrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 122, 87, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jB_Entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jL_Contrasena)
-                            .addComponent(jL_Usuario))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jP_Contrasena)
-                            .addComponent(jT_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(127, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jT_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jL_Usuario))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jP_Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jL_Contrasena))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jB_Entrar)
-                .addContainerGap(110, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondoLogin.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -153,14 +137,20 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
             //En caso que fuera "ArchivosPlanos"
             case "ArchivosPlanos":
                 
-                System.err.println("Hola ArchivosPlanos");
                 
+
                 break;
                 
             //En caso que fuera archivosXML
             case "XML":
 
-                System.err.println("Hola XML");
+                if(xML_Usuarios.metodoLoginUsuario(getUsuario()) && xML_Usuarios.metodoLoginContrasena(getInfoPass())) {
+                    this.setVisible(false);
+                    this.manejador_Ventanas.mostrarFRM_MenuPrincipal();
+                }else {
+                    JOptionPane.showMessageDialog(null, "El usuario o la contraseña son incorrectas", "Universidad de Costa Rica", JOptionPane.INFORMATION_MESSAGE);
+                    limpiarCampos();
+                }
                 
                 break;
             
@@ -169,7 +159,6 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
 
                 if(metodosConexionBD1.metodoLogin(getUsuario(), getInfoPass()))
                 {
-                    System.out.println("Funciona o no funciona");
                     this.setVisible(false);
                     this.manejador_Ventanas.mostrarFRM_MenuPrincipal();
                 }
@@ -188,6 +177,7 @@ public class FRM_LoginUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jB_Entrar;
     private javax.swing.JLabel jL_Contrasena;
     private javax.swing.JLabel jL_Usuario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField jP_Contrasena;
     private javax.swing.JTextField jT_Usuario;
     // End of variables declaration//GEN-END:variables

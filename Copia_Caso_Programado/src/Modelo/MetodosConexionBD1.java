@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
+import jdk.nashorn.internal.scripts.JO;
 
 /**
  *
@@ -300,10 +302,11 @@ public class MetodosConexionBD1 {
     /*
     
     */
-    public void consultarCursoMatricula(String sigla) {
+    public boolean consultarCursoMatricula(String sigla) {
         
         ResultSet rs = null;
         Statement cmd = null;
+        boolean existe = false;
 
         try {
                 cmd = con.createStatement();
@@ -314,6 +317,7 @@ public class MetodosConexionBD1 {
                    
                     String nombreCurso = rs.getString("nombre");
                     this.nombreCurso = nombreCurso;
+                    existe = true;
                     //int edad = rs.getInt(2);
                    
                 }
@@ -323,7 +327,7 @@ public class MetodosConexionBD1 {
         {
             System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
         }
-        
+        return existe;
     }//Fin consultarCursoMatricula
     
     /*
@@ -338,11 +342,18 @@ public class MetodosConexionBD1 {
     /*
     
     */
-    public void consultarEstudianteMatricula(String cedula) {
+    public void msjCursoNoEncontrado() {
+        JOptionPane.showMessageDialog(null, "No se encuentra el curso, diríjase al módulo Mantenimiento Cursos", "Universidad de Costa Rica", JOptionPane.INFORMATION_MESSAGE);
+    }
+    /*
+    
+    */
+    public boolean consultarEstudianteMatricula(String cedula) {
         
         ResultSet rs = null;
         Statement cmd = null;
-
+        boolean existe = false;
+        
         try {
                 cmd = con.createStatement();
                 rs = cmd.executeQuery("SELECT nombre FROM estudiantes WHERE cedula = '"+cedula+"'");
@@ -352,7 +363,7 @@ public class MetodosConexionBD1 {
                     
                     String nombreEst = rs.getString("nombre");
                     this.nombreEst = nombreEst;
-                    
+                    existe = true;
                    
                 }
                 rs.close();
@@ -361,7 +372,7 @@ public class MetodosConexionBD1 {
         {
             System.out.println("SQLException ejecutando sentencia: " + e.getMessage());
         }
-        
+        return existe;
     }//Fin consultarEstudianteMatricula
     
     /*
@@ -372,6 +383,13 @@ public class MetodosConexionBD1 {
         return this.nombreEst;
         
     }//Fin devolverNombreEst
+    
+    /*
+    
+    */
+    public void msjEstNoEncontrado() {
+        JOptionPane.showMessageDialog(null, "No se encuentra el estudiante, diríjase al módulo Mantenimiento Estudiantes", "Universidad de Costa Rica", JOptionPane.INFORMATION_MESSAGE);
+    }
     
     public boolean metodoLogin(String usuario, String contrasena) {
         

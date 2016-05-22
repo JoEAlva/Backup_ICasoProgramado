@@ -29,7 +29,8 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
     public FRM_MenuPrincipal() {
         
         initComponents();
-        this.setLocation(100, 100);
+        this.setLocation(300, 100);
+        this.setTitle("Universidad de Costa Rica");
         fRM_SistemaInformacion = new FRM_SistemaInformacion(this);
         
         
@@ -75,17 +76,16 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jB_RegistrarEstudiante = new javax.swing.JButton();
-        jB_RegistrarCurso = new javax.swing.JButton();
-        jB_RegistrarUsuario = new javax.swing.JButton();
+        jL_FondoImagen = new javax.swing.JLabel();
         jm_MenuPrincipal = new javax.swing.JMenuBar();
         jm_Archivo = new javax.swing.JMenu();
         jm_Salir = new javax.swing.JMenuItem();
         jm_Mantenimientos = new javax.swing.JMenu();
         jm_Estudiantes = new javax.swing.JMenuItem();
         jm_Cursos = new javax.swing.JMenuItem();
-        jm_Matricula = new javax.swing.JMenuItem();
         jM_Usuarios = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jm_Matricula = new javax.swing.JMenuItem();
         jM_Reportes = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -103,26 +103,7 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jB_RegistrarEstudiante.setText("Registrar Estudiante");
-        jB_RegistrarEstudiante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jB_RegistrarEstudianteActionPerformed(evt);
-            }
-        });
-
-        jB_RegistrarCurso.setText("Registrar Curso");
-        jB_RegistrarCurso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jB_RegistrarCursoActionPerformed(evt);
-            }
-        });
-
-        jB_RegistrarUsuario.setText("Registrar Usuario");
-        jB_RegistrarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jB_RegistrarUsuarioActionPerformed(evt);
-            }
-        });
+        jL_FondoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondoImagen.png"))); // NOI18N
 
         jm_Archivo.setText("Archivo");
 
@@ -131,7 +112,7 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
 
         jm_MenuPrincipal.add(jm_Archivo);
 
-        jm_Mantenimientos.setText("Mantenimientos");
+        jm_Mantenimientos.setText("Mantenimiento");
 
         jm_Estudiantes.setText("Estudiantes");
         jm_Mantenimientos.add(jm_Estudiantes);
@@ -139,14 +120,18 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
         jm_Cursos.setText("Cursos");
         jm_Mantenimientos.add(jm_Cursos);
 
-        jm_Matricula.setText("Matrícula");
-        jm_Matricula.setActionCommand("Matricula");
-        jm_Mantenimientos.add(jm_Matricula);
-
         jM_Usuarios.setText("Usuarios");
         jm_Mantenimientos.add(jM_Usuarios);
 
         jm_MenuPrincipal.add(jm_Mantenimientos);
+
+        jMenu4.setText("Matrícula");
+
+        jm_Matricula.setText("Matrícula");
+        jm_Matricula.setActionCommand("Matricula");
+        jMenu4.add(jm_Matricula);
+
+        jm_MenuPrincipal.add(jMenu4);
 
         jM_Reportes.setText("Reportes");
         jm_MenuPrincipal.add(jM_Reportes);
@@ -157,49 +142,19 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jB_RegistrarEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jB_RegistrarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jB_RegistrarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(597, Short.MAX_VALUE))
+            .addGap(0, 851, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jL_FondoImagen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(jB_RegistrarEstudiante)
-                .addGap(18, 18, 18)
-                .addComponent(jB_RegistrarCurso)
-                .addGap(18, 18, 18)
-                .addComponent(jB_RegistrarUsuario)
-                .addContainerGap(100, Short.MAX_VALUE))
+            .addGap(0, 315, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jL_FondoImagen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jB_RegistrarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_RegistrarEstudianteActionPerformed
-        
-//        registro = "Estudiantes";
-//        frmsi.setVisible(true);
-        
-    }//GEN-LAST:event_jB_RegistrarEstudianteActionPerformed
-
-    private void jB_RegistrarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_RegistrarCursoActionPerformed
-//
-//        registro = "Cursos";
-//        frmsi.setVisible(true);
-        
-    }//GEN-LAST:event_jB_RegistrarCursoActionPerformed
-
-    private void jB_RegistrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_RegistrarUsuarioActionPerformed
-        
-//        registro = "Usuarios";
-//        frmsi.setVisible(true);
-        
-    }//GEN-LAST:event_jB_RegistrarUsuarioActionPerformed
 
     /*
     
@@ -247,14 +202,13 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jB_RegistrarCurso;
-    private javax.swing.JButton jB_RegistrarEstudiante;
-    private javax.swing.JButton jB_RegistrarUsuario;
+    private javax.swing.JLabel jL_FondoImagen;
     private javax.swing.JMenu jM_Reportes;
     private javax.swing.JMenuItem jM_Usuarios;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuItem jMenuItem1;

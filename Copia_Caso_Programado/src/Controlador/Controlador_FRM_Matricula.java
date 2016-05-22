@@ -45,6 +45,7 @@ public class Controlador_FRM_Matricula implements ActionListener{
         this.metodosCursos=mantenimientoCursos.controlador.metodosCursos;
         this.metodosEstudiantes=mantenimientoEstudiantes.controlador_FRM_MantenimientoEstudiantes.metodosEstudiantes;
 
+        //Arreglar los archivos de matricula
         metodosMatricula=new MetodosMatricula();
         archivosMatricula = new ArchivosMatricula();
 
@@ -72,11 +73,49 @@ public class Controlador_FRM_Matricula implements ActionListener{
             //En el caso que fuera ArchivosPlanos
             case "ArchivosPlanos":
                 
-                if(e.getActionCommand().equals("Consultar")) {
+                if(e.getActionCommand().equals("ConsultaRapidaEstudiante")) {
                     
+                    if(metodosEstudiantes.consultarEstudiante(frm_Matricula.devolverCedula())) {
+                        frm_Matricula.mostrarNombEst(metodosEstudiantes.getArregloInformacion());
+                        encontroEstudiante = true;
+                    }else {
+                        conexionBD1.msjEstNoEncontrado();
+                    }
                     
-                    System.out.println("ArchivosPlanos");
+                }
+                
+                if(e.getActionCommand().equals("ConsultaRapidaCurso")) {
                     
+                    if(metodosCursos.consultarCurso(frm_Matricula.devolverSigla())) {
+                        frm_Matricula.mostrarNombCurso(metodosCursos.getArregloInformacion());
+                        encontroCurso = true;
+                    }else {
+                        conexionBD1.msjCursoNoEncontrado();
+                    }
+                    
+                }
+                
+                if(encontroEstudiante && encontroCurso) {
+                    frm_Matricula.habilitarAgregar();
+                }
+                
+                if(e.getActionCommand().equals("Agregar")) {
+                    frm_Matricula.cargarTabla();
+                    encontroCurso=false;
+                    frm_Matricula.estadoInicial();
+                    frm_Matricula.limpiarEst();
+                    frm_Matricula.limpiarCurso(); 
+                }
+                
+                if(e.getActionCommand().equals("Finalizar")) {  
+                    
+                    for(int contador=0;contador<frm_Matricula.getCantidadDeCursosMatriculados();contador++)
+                    {
+                       metodosMatricula.agregarMatricula(frm_Matricula.getInformacionTablaMatricula(contador));
+                    }
+                    frm_Matricula.resetearInterfaz();
+
+                    metodosMatricula.mostrarInformacion();
                 }
                  
                 break;
@@ -98,15 +137,45 @@ public class Controlador_FRM_Matricula implements ActionListener{
             case "Bases_de_Datos":
                 
                 if(e.getActionCommand().equals("ConsultaRapidaEstudiante")) {
-                    
-                    
-                    
+                    if(conexionBD1.consultarEstudianteMatricula(frm_Matricula.devolverCedula())) {
+                        frm_Matricula.mostrarNombreEstudiante(conexionBD1.devolverNombreEst());
+                        encontroEstudiante = true;
+                    }else {
+                        conexionBD1.msjEstNoEncontrado();
+                    }                 
                 }
                 
                 if(e.getActionCommand().equals("ConsultaRapidaCurso")) {
+                    if(conexionBD1.consultarCursoMatricula(frm_Matricula.devolverSigla())) {
+                        frm_Matricula.mostrarNombreCurso(conexionBD1.devolverNombreCurso());
+                        encontroCurso = true;
+                    }else {
+                        conexionBD1.msjCursoNoEncontrado();
+                    }
+                }
+                
+                if(encontroEstudiante && encontroCurso) {
+                    frm_Matricula.habilitarAgregar();
+                }
+                
+                if(e.getActionCommand().equals("Agregar")) {
+                    frm_Matricula.cargarTabla();
+                    encontroCurso=false;
+                    frm_Matricula.estadoInicial();
+                    frm_Matricula.limpiarEst();
+                    frm_Matricula.limpiarCurso(); 
+                }
+                
+                if(e.getActionCommand().equals("Finalizar")) {  
                     
-                    
-                    
+                    for(int contador=0;contador<frm_Matricula.getCantidadDeCursosMatriculados();contador++)
+                    {
+                       conexionBD1.registrarMatricula(frm_Matricula.getInformacionTablaMatricula(contador));
+                       conexionBD1.registrarDetalleMatricula(frm_Matricula.getInformacionTablaDetalle(contador));
+                    }
+                    frm_Matricula.resetearInterfaz();
+
+                    metodosMatricula.mostrarInformacion();
                 }
                 
                 break;
@@ -166,6 +235,7 @@ public class Controlador_FRM_Matricula implements ActionListener{
     }
     public String colocarCodigo()
     {
-        return metodosMatricula.devolverCodigo();
+        conexionBD1.contarNumeroFilasMatricula();
+        return conexionBD1.devolverCodigoMatricula();
     }
 }

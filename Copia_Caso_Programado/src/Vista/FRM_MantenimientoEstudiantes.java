@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Modelo.MetodosEstudiantes;
 import Modelo.MetodosConexionBD1;
 import Controlador.Controlador_FRM_MantenimientoEstudiantes;
 import javax.swing.JOptionPane;
@@ -19,8 +20,10 @@ public class FRM_MantenimientoEstudiantes extends javax.swing.JFrame {
     String sistemaInfo = "";
     
     //Referencias de clases
-    public Controlador_FRM_MantenimientoEstudiantes controlador_FRM_MantenimientoEstudiantes;
     MetodosConexionBD1 conexionBD1;
+    MetodosEstudiantes me;
+    public Controlador_FRM_MantenimientoEstudiantes controlador_FRM_MantenimientoEstudiantes;
+    
     
     public FRM_MantenimientoEstudiantes(String sistemaInfo, MetodosConexionBD1 conexionBD1) {
         initComponents();

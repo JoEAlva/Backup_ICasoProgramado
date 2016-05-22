@@ -29,7 +29,7 @@ public class FRM_SistemaInformacion extends javax.swing.JFrame {
         initComponents();
         
         this.setLocation(450, 200);//Ubica la ésta ventana en un llugar específico
-        this.jRB_ArchivosPlanos.setSelected(true);//Selecciona el radioButton especificado
+        this.jRB_Bases_de_Datos.setSelected(true);//Selecciona el radioButton especificado
         this.frmmp = frmmp;
         
     }//Fin del constructor
@@ -50,49 +50,37 @@ public class FRM_SistemaInformacion extends javax.swing.JFrame {
         jRB_XML = new javax.swing.JRadioButton();
         jRB_Bases_de_Datos = new javax.swing.JRadioButton();
         jB_Aceptar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         grupoSistemaInformacion.add(jRB_ArchivosPlanos);
+        jRB_ArchivosPlanos.setFont(new java.awt.Font("Impact", 2, 12)); // NOI18N
         jRB_ArchivosPlanos.setText("Archivos Planos");
+        getContentPane().add(jRB_ArchivosPlanos, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 75, 111, -1));
 
         grupoSistemaInformacion.add(jRB_XML);
+        jRB_XML.setFont(new java.awt.Font("Impact", 2, 12)); // NOI18N
         jRB_XML.setText("XML");
+        getContentPane().add(jRB_XML, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 111, 111, -1));
 
         grupoSistemaInformacion.add(jRB_Bases_de_Datos);
+        jRB_Bases_de_Datos.setFont(new java.awt.Font("Impact", 2, 12)); // NOI18N
         jRB_Bases_de_Datos.setText("Bases de Datos");
+        getContentPane().add(jRB_Bases_de_Datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 147, -1, -1));
 
+        jB_Aceptar.setBackground(new java.awt.Color(0, 192, 243));
+        jB_Aceptar.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jB_Aceptar.setText("Aceptar");
         jB_Aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jB_AceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(jB_Aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 183, 111, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jRB_Bases_de_Datos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRB_XML, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jRB_ArchivosPlanos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jB_Aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(189, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jRB_ArchivosPlanos)
-                .addGap(18, 18, 18)
-                .addComponent(jRB_XML)
-                .addGap(18, 18, 18)
-                .addComponent(jRB_Bases_de_Datos)
-                .addGap(18, 18, 18)
-                .addComponent(jB_Aceptar)
-                .addContainerGap(108, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondoSistemaArchivos.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -144,6 +132,7 @@ public class FRM_SistemaInformacion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup grupoSistemaInformacion;
     private javax.swing.JButton jB_Aceptar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButton jRB_ArchivosPlanos;
     private javax.swing.JRadioButton jRB_Bases_de_Datos;
     private javax.swing.JRadioButton jRB_XML;

@@ -27,19 +27,20 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener{
     MetodosConexionBD1 conexionBD1;
     XML_Cursos xmlc;
     public MetodosCursos metodosCursos;
-    ArchivosCursos cursosArchivos;
+    ArchivosCursos archivosCursos;
     
-    public Controlador_FRM_MantenimientoCursos(FRM_MantenimientoCursos frmmc, String sistemaInfo, MetodosConexionBD1 conexionBD1)//Constructor
+    //Constructor de la clase
+    public Controlador_FRM_MantenimientoCursos(FRM_MantenimientoCursos frmmc, String sistemaInfo, MetodosConexionBD1 conexionBD1)
     {
         //Se iguala sistemaInfo al valos sistemaInfo que entra por parámetro
         this.sistemaInfo = sistemaInfo;
         //Hace referencia a FRM_MantenimientoCursos
         this.frmmc= frmmc;
-        
-        cursosArchivos = new ArchivosCursos();
-        metodosCursos = new MetodosCursos(cursosArchivos);
+        //Se instancia ArchivosCursos
+        archivosCursos = new ArchivosCursos();
+        metodosCursos = new MetodosCursos(archivosCursos);
 
-        if(cursosArchivos.cargarInfoCursosArchivo())
+        if(archivosCursos.cargarInfoCursosArchivo())
         {
             System.out.println("Se cargó el archivo curso(controlador)");
         }
@@ -48,7 +49,7 @@ public class Controlador_FRM_MantenimientoCursos implements ActionListener{
             System.out.println("No se cargó el archivo curso(controlador)");
         }
 
-        metodosCursos.arrayCursos = cursosArchivos.leerInfoCursosArchivo();
+        metodosCursos.arrayCursos = archivosCursos.leerInfoCursosArchivo();
               
         xmlc = new XML_Cursos(frmmc);
               

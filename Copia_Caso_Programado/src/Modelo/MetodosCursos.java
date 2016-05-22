@@ -38,7 +38,6 @@ public class MetodosCursos {
     {
         Cursos temporal=new Cursos(informacion[0], informacion[1], Integer.parseInt(informacion[2]), informacion[3]);
         arrayCursos.add(temporal);
-        mensajeCursoAgregado();        
     }
     
     /*

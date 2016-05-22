@@ -7,6 +7,9 @@ package Controlador;
 
 import Modelo.Manejador_Ventanas;
 import Modelo.MetodosConexionBD1;
+import Modelo.MetodosUsuario;
+import Modelo.ArchivosUsuario;
+import Modelo.XML_Usuarios;
 import Vista.FRM_MenuPrincipal;
 import Vista.FRM_SistemaInformacion;
 import Vista.FRM_MantenimientoEstudiantes;
@@ -27,28 +30,34 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener{
     String sistemaInformacion = "";
     
     //Referencias
+    ArchivosUsuario archivosUsuario;
+    FRM_LoginUsuario fRM_LoginUsuario;
+    FRM_MantenimientoCursos fRM_MantenimientoCursos;
+    FRM_MantenimientoEstudiantes fRM_MantenimientoEstudiantes;
+    FRM_MantenimientoUsuarios fRM_MantenimientoUsuarios; 
     FRM_MenuPrincipal fRM_MenuPrincipal;
+    FRM_Matricula fRM_Matricula;
+    FRM_SistemaInformacion fRM_SistemaInformacion;
     Manejador_Ventanas manejador_Clases;
     MetodosConexionBD1 conexionBD1;
-    FRM_SistemaInformacion fRM_SistemaInformacion;
-    FRM_MantenimientoEstudiantes fRM_MantenimientoEstudiantes;
-    FRM_MantenimientoCursos fRM_MantenimientoCursos;
-    FRM_LoginUsuario fRM_LoginUsuario;
-    FRM_Matricula fRM_Matricula;
-    FRM_MantenimientoUsuarios fRM_MantenimientoUsuarios; 
+    MetodosUsuario mu;
     
-    
+    XML_Usuarios xmlu;
+        
+    //Constructor de la clase
     public Controlador_FRM_MenuPrincipal(Manejador_Ventanas manejador_Clases, FRM_MenuPrincipal fRM_MenuPrincipal)
     {
-        //Se iguala la referencia fRM_MenuPrincipal con lo que entra por parámetros
-        this.fRM_MenuPrincipal = fRM_MenuPrincipal;
-        //Se iguala la referencia manejador_Clases con lo que entra por parámetros
-        this.manejador_Clases = manejador_Clases;
-        //Se iguala la referencia conexionBD1 con lo que entra por parámetros
+        //Se instancia la clase de la conexion a la base de datos
         conexionBD1 = new MetodosConexionBD1();
-        
+        //Se instancia la ventana principal
+        this.fRM_MenuPrincipal = fRM_MenuPrincipal;
+        //Se iguala y ejecuta un método de la clase Manejador_Ventanas
+        this.manejador_Clases = manejador_Clases;
         this.manejador_Clases.mostrarFRM_SistemaInformacion();
-        
+        //Se instancian las clases de los Archivos
+        archivosUsuario = new ArchivosUsuario();
+        //Se instancian las clases de los métodos
+        mu = new MetodosUsuario(archivosUsuario);
 
     }
     
@@ -65,7 +74,7 @@ public class Controlador_FRM_MenuPrincipal implements ActionListener{
         fRM_MantenimientoCursos = new FRM_MantenimientoCursos(this.sistemaInformacion, this.conexionBD1);
         fRM_MantenimientoUsuarios = new FRM_MantenimientoUsuarios(this.sistemaInformacion, conexionBD1);
         fRM_Matricula = new FRM_Matricula(fRM_MantenimientoEstudiantes,fRM_MantenimientoCursos, conexionBD1, this.sistemaInformacion);
-        fRM_LoginUsuario = new FRM_LoginUsuario(this.sistemaInformacion, conexionBD1, this.manejador_Clases);
+        fRM_LoginUsuario = new FRM_LoginUsuario(this.sistemaInformacion, conexionBD1, this.manejador_Clases, mu, fRM_MantenimientoUsuarios);
     }
     
     public void decisionVentana()

@@ -38,8 +38,9 @@ public class Controlador_FRM_MantenimientoEstudiantes implements ActionListener{
         this.sistemaInfo = sistemaInfo;
         //Hace referencia a FRM_MantenimientoEstudiantes
         this.frmme=frmme;
-        
+        //Se isntancia ArchivosEstudiante
         estudianteArchivos = new ArchivosEstudiante();
+        //Se iguala metodosEstudiante a lo que entra por parámetro
         metodosEstudiantes = new MetodosEstudiantes(estudianteArchivos);
 
         if(estudianteArchivos.cargarInfoArchivoEstudiante())

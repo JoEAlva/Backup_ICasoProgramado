@@ -28,6 +28,11 @@ public class MetodosMatricula {
         Matricula temporal=new Matricula(informacion[0], informacion[1], informacion[2]);
         arrayMatricula.add(temporal);    
     }
+    public void agregarDetalleMatricula(String informacion[])
+    {
+        Matricula temporal=new Matricula(informacion[0], informacion[1], informacion[2]);
+        arrayMatricula.add(temporal);    
+    }
     public void mostrarInformacion()
     {
         for(int contador=0;contador<arrayMatricula.size();contador++)

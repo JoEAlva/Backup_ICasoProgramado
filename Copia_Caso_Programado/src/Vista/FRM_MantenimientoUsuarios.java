@@ -7,6 +7,7 @@ package Vista;
 
 import Controlador.Controlador_FRM_MantenimientoUsuarios;
 import Modelo.MetodosConexionBD1;
+import Modelo.MetodosUsuario;
 import Vista.FRM_LoginUsuario;
 import javax.swing.JOptionPane;
 /**
@@ -22,6 +23,7 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
     public Controlador_FRM_MantenimientoUsuarios controlador_FRM_MantenimientoUsuarios;
     FRM_LoginUsuario fRM_LoginUsuario;
     MetodosConexionBD1 conexionBD1;
+    MetodosUsuario mu;
     
     public FRM_MantenimientoUsuarios(String sistemaInfo, MetodosConexionBD1 conexionBD1) {
         
@@ -30,7 +32,7 @@ public class FRM_MantenimientoUsuarios extends javax.swing.JFrame {
         this.conexionBD1 = conexionBD1;
         this.sistemaInfo = sistemaInfo;
         this.fRM_LoginUsuario = fRM_LoginUsuario;
-        controlador_FRM_MantenimientoUsuarios = new Controlador_FRM_MantenimientoUsuarios(this, this.sistemaInfo,  this.conexionBD1);
+        controlador_FRM_MantenimientoUsuarios = new Controlador_FRM_MantenimientoUsuarios(this, this.sistemaInfo, this.conexionBD1);
         this.gUI_Botones1.agregarEventos(controlador_FRM_MantenimientoUsuarios);            
         this.gUI_Botones1.estadoInicialBotones();
         this.gUI_InformacionUsuario2.estadoInicialCampos();
