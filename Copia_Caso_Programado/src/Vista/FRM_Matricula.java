@@ -182,24 +182,34 @@ public class FRM_Matricula extends javax.swing.JFrame {
         jl_CodigoMatricula = new javax.swing.JLabel();
         jt_CodigoMatricula = new javax.swing.JTextField();
         btn_Finalizar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
                 formComponentHidden(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jl_Cedula.setText("Cédula");
+        getContentPane().add(jl_Cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 67, -1, -1));
 
         jl_NombreEstudiante.setText("Nombre");
+        getContentPane().add(jl_NombreEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 117, -1, -1));
 
         jl_Sigla.setText("Sigla");
+        getContentPane().add(jl_Sigla, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 71, -1, -1));
 
         jl_NombreCurso.setText("Nombre");
+        getContentPane().add(jl_NombreCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 117, -1, -1));
+        getContentPane().add(jt_Cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 61, 66, -1));
 
         jt_NombreEstudiante.setEnabled(false);
+        getContentPane().add(jt_NombreEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 111, 120, -1));
+        getContentPane().add(jt_Sigla, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 65, 86, -1));
 
         jt_NombreCurso.setEnabled(false);
+        getContentPane().add(jt_NombreCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 111, 161, -1));
 
         tbl_Matricula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -219,108 +229,30 @@ public class FRM_Matricula extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbl_Matricula);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 157, 423, 88));
+
+        gUI_Botones2.setOpaque(false);
+        getContentPane().add(gUI_Botones2, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 251, -1, -1));
+
         btn_ConsultaRapidaSigla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar.png"))); // NOI18N
         btn_ConsultaRapidaSigla.setActionCommand("ConsultaRapidaCurso");
+        getContentPane().add(btn_ConsultaRapidaSigla, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 61, -1, -1));
 
         btn_ConsultaRapidaEstudiante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar.png"))); // NOI18N
         btn_ConsultaRapidaEstudiante.setActionCommand("ConsultaRapidaEstudiante");
+        getContentPane().add(btn_ConsultaRapidaEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 61, -1, -1));
 
         jl_CodigoMatricula.setText("Código");
+        getContentPane().add(jl_CodigoMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 27, -1, -1));
+        getContentPane().add(jt_CodigoMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 21, 132, -1));
 
+        btn_Finalizar.setBackground(new java.awt.Color(255, 153, 51));
         btn_Finalizar.setText("Finalizar Matrícula");
         btn_Finalizar.setActionCommand("Finalizar");
+        getContentPane().add(btn_Finalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 277, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jl_NombreEstudiante)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jt_NombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jl_CodigoMatricula)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jt_CodigoMatricula))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jl_Cedula)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jt_Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btn_ConsultaRapidaEstudiante))))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jl_Sigla, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jl_NombreCurso, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jt_NombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jt_Sigla, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btn_ConsultaRapidaSigla))))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(109, 109, 109))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(gUI_Botones2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_Finalizar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jt_CodigoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jl_CodigoMatricula))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jl_Sigla)
-                                    .addComponent(jt_Sigla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btn_ConsultaRapidaSigla)
-                                .addGap(6, 6, 6)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jl_NombreCurso)
-                            .addComponent(jt_NombreCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jl_Cedula)
-                                .addComponent(jt_Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btn_ConsultaRapidaEstudiante))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jl_NombreEstudiante)
-                            .addComponent(jt_NombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gUI_Botones2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btn_Finalizar)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondoMatricula.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -343,6 +275,7 @@ public class FRM_Matricula extends javax.swing.JFrame {
     private javax.swing.JButton btn_ConsultaRapidaSigla;
     private javax.swing.JButton btn_Finalizar;
     private Vista.GUI_Botones2 gUI_Botones2;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jl_Cedula;
     private javax.swing.JLabel jl_CodigoMatricula;
